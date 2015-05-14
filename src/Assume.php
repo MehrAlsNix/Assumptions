@@ -62,13 +62,21 @@ class Assume
     }
 
     /**
-     * @param string $message
+     * @param ...$objects
+     */
+    public static function assumeNotNull(...$objects)
+    {
+        self::assumeThat($objects, everyItem($objects));
+    }
+
+    /**
      * @param \Exception $e
+     * @param string $message
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeNoException($message, \Exception $e)
+    public static function assumeNoException(\Exception $e, $message = '')
     {
-        self::assumeThat($message, $e, nullValue());
+        self::assumeThat($e, nullValue(), $message);
     }
 }
