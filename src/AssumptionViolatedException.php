@@ -33,7 +33,7 @@ class AssumptionViolatedException extends \PHPUnit_Framework_AssertionFailedErro
     /**
      * @var
      */
-    private $valueMatcher;
+    private $valueMatcher = true;
 
     /**
      * @var
@@ -52,11 +52,37 @@ class AssumptionViolatedException extends \PHPUnit_Framework_AssertionFailedErro
      * @param Matcher $matcher
      * @param string $message
      */
-    public function __construct($assumption, Matcher $matcher, $message = '')
+    public function __construct($value, Matcher $matcher, $message = '')
     {
-        $this->assumption = $assumption;
-        $this->matcher    = $matcher;
+        $this->value = $value;
+        $this->matcher = $matcher;
 
-        parent::__construct($message);
+        parent::__construct($this->describe($message));
+    }
+
+    protected function describe($message)
+    {
+        $description = '';
+
+        if ($this->assumption !== null) {
+            $description .= $this->assumption;
+        }
+
+        if ($this->valueMatcher) {
+            // a value was passed in when this instance was constructed; print it
+            if ($this->assumption !== null) {
+                $description .= ": ";
+            }
+
+            $description .= "got: ";
+            $description .= print_r($this->value, true);
+
+            if ($this->matcher !== null) {
+                $description .= ", expected: ";
+                // $description .= $this->matcher;
+            }
+        }
+
+        return $description . $message;
     }
 }

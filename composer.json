@@ -15,7 +15,8 @@
     "phpunit/phpunit": "~4"
   },
   "require-dev": {
-    "johnkary/phpunit-speedtrap": "dev-master"
+    "johnkary/phpunit-speedtrap": "dev-master",
+    "satooshi/php-coveralls": "0.6.*"
   },
   "autoload": {
     "psr-4": {

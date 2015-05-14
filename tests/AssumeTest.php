@@ -20,11 +20,14 @@ namespace MehrAlsNix\Assumptions\Tests;
 use MehrAlsNix\Assumptions\Assume;
 use PHPUnit_Framework_TestCase as TestCase;
 
+/**
+ * Class AssumeTest
+ * @package MehrAlsNix\Assumptions\Tests
+ */
 class AssumeTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
     public function throwExceptionWithWrongAssumption()
     {
