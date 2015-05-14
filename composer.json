@@ -1,0 +1,24 @@
+{
+  "name": "MehrAlsNix/Assumptions",
+  "description": "Assumptions",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Siad Ardroumli",
+      "email": "siad.ardroumli@gmail.com"
+    }
+  ],
+  "require": {
+    "hamcrest/hamcrest-php": "1.2.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.6.*"
+  }
+  "autoload": {
+    "psr-4": {
+      "MehrAlsNix\\Assumptions\\": "src",
+      "MehrAlsNix\\Assumptions\\Tests\\": "tests"
+    }
+  }
+}
