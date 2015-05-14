@@ -23,7 +23,7 @@ use Hamcrest\Matcher;
  * Class AssumptionViolatedException
  * @package MehrAlsNix\Assumptions
  */
-class AssumptionViolatedException extends \RuntimeException
+class AssumptionViolatedException extends \PHPUnit_Framework_AssertionFailedError
 {
     /**
      * @var string
