@@ -12,7 +12,7 @@
  *
  * @copyright 2015 MehrAlsNix (http://www.mehralsnix.de)
  * @license   http://www.opensource.org/licenses/mit-license.php MIT
- * @link      http://github.com/MehrAlsNix/kindergarten
+ * @link      http://github.com/MehrAlsNix/Assumptions
  */
 
 namespace MehrAlsNix\Assumptions;
