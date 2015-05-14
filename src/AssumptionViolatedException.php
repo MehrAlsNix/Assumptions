@@ -56,13 +56,7 @@ class AssumptionViolatedException extends \RuntimeException
     {
         $this->assumption = $assumption;
         $this->matcher    = $matcher;
-    }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getMessage()
-    {
-
+        parent::__construct($message);
     }
 }
