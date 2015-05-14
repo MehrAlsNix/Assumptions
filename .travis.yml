@@ -10,6 +10,4 @@ script:
   - phpunit
 
 after_script:
-  - php vendor/bin/coveralls -v
-  - wget https://scrutinizer-ci.com/ocular.phar
-  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+  - CODECLIMATE_REPO_TOKEN=4295b7489478a4fea3966d5391d34864af8168e91efeacc76402aeed0453be66 vendor/bin/test-reporter
