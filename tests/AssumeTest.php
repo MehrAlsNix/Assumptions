@@ -28,6 +28,7 @@ class AssumeTest extends TestCase
 {
     /**
      * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
     public function throwExceptionWithWrongAssumption()
     {
