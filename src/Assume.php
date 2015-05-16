@@ -66,7 +66,7 @@ class Assume
      */
     public static function assumeNotNull(...$objects)
     {
-        self::assumeThat($objects, everyItem($objects));
+        self::assumeThat($objects, everyItem(notNullValue()));
     }
 
     /**
@@ -75,8 +75,8 @@ class Assume
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeNoException(\Exception $e, $message = '')
+    public static function assumeNoException($e, $message = '')
     {
-        self::assumeThat($e, nullValue(), $message);
+        self::assumeThat($e, not(anInstanceOf('Exception')), $message);
     }
 }

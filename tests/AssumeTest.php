@@ -32,6 +32,8 @@ class AssumeTest extends TestCase
      */
     public function throwExceptionWithWrongAssumption()
     {
+        $this->assertEmpty(Assume::assumeNoException(null));
+        $this->assertEmpty(Assume::assumeNotNull(1, 2, 3));
         $this->assertEmpty(Assume::assumeTrue(true, 'Assume "true" failed.'));
         Assume::assumeFalse(true, 'Assume "false" failed.');
     }
