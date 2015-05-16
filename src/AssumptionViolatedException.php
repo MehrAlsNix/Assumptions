@@ -54,7 +54,7 @@ class AssumptionViolatedException extends \PHPUnit_Framework_IncompleteTestError
      */
     public function __construct($value, Matcher $matcher, $message = '')
     {
-        $this->value = $value;
+        $this->value = json_encode($value);
         $this->matcher = $matcher;
 
         parent::__construct($this->describe($message));
@@ -79,10 +79,10 @@ class AssumptionViolatedException extends \PHPUnit_Framework_IncompleteTestError
 
             if ($this->matcher !== null) {
                 $description .= ", expected: ";
-                // $description .= $this->matcher;
+                $description .= $this->matcher;
             }
         }
 
-        return $description . $message;
+        return $description . PHP_EOL . $message;
     }
 }
