@@ -29,7 +29,7 @@ class AssumeTest extends TestCase
     /**
      * @test
      * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
-     * @expectedExceptionMessage Should stop here...
+     * @expectedExceptionMessage Unable to connect
      */
     public function throwExceptionWithWrongAssumption()
     {
@@ -40,6 +40,6 @@ class AssumeTest extends TestCase
         assumeNotNull(1, 2, 3);
         assumeTrue(true, 'Assume "true" failed.');
         assumeFalse(false, 'Assume "false" failed.');
-        assumeFalse(true, 'Should stop here...');
+        assumeSocket('127.0.0.1', 123);
     }
 }

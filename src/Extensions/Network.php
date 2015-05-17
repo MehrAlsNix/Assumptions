@@ -18,26 +18,22 @@
 namespace MehrAlsNix\Assumptions\Extensions;
 
 /**
- * Trait System
+ * Trait Network
  * @package MehrAlsNix\Assumptions\Extensions
  */
-trait System
+trait Network
 {
-    /**
-     * @param string $atLeast
-     * @param string $message
-     */
-    public static function assumePhpVersion($atLeast, $message = '')
-    {
-        assumeTrue(version_compare(phpversion(), $atLeast, '>='), $message);
-    }
+    private static $SOCK_ERR_MSG = 'Unable to create socket: ';
 
     /**
-     * @param string $extension
-     * @param string $message
+     * @param string $address
+     * @param int    $port
      */
-    public static function assumeExtensionLoaded($extension, $message = '')
+    public static function assumeSocket($address, $port = 0)
     {
-        assumeTrue(extension_loaded($extension), $message);
+        $socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+
+        assumeThat($socket, not(is(false)), self::$SOCK_ERR_MSG . socket_last_error($socket));
+        assumeThat(@socket_connect($socket, $address, $port), not(is(false)), 'Unable to connect: ' . $address . ':' . $port);
     }
 }

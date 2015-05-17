@@ -25,6 +25,7 @@ use Hamcrest\Matcher;
  */
 class Assume
 {
+    use Extensions\Network;
     use Extensions\System;
 
     /**

@@ -104,3 +104,18 @@ if (!function_exists('assumeExtensionLoaded')) {
         );
     }
 }
+
+if (!function_exists('assumeSocket')) {
+    /**
+     * Make an assumption and throw
+     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     */
+    function assumeSocket()
+    {
+        $args = func_get_args();
+        call_user_func_array(
+            array('MehrAlsNix\Assumptions\Assume', 'assumeSocket'),
+            $args
+        );
+    }
+}
