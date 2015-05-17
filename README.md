@@ -10,6 +10,7 @@ You can read more of it on their wiki:
 > dependencies explicit can often improve a design. For example, if a test fails
 > when run in a different locale than the developer intended, it can be fixed by
 > explicitly passing a locale to the domain code.
+> 
 > [junit wiki - assumptions with assume](https://github.com/junit-team/junit/wiki/Assumptions-with-assume)
 
 <hr>

@@ -15,31 +15,25 @@
  * @link      http://github.com/MehrAlsNix/Assumptions
  */
 
-namespace MehrAlsNix\Assumptions\Tests;
-
-use PHPUnit_Framework_TestCase as TestCase;
+namespace MehrAlsNix\Assumptions\Extensions;
 
 /**
- * Class AssumeTest
- * @package MehrAlsNix\Assumptions\Tests
- * @requires PHP 5.6
+ * Trait System
+ * @package MehrAlsNix\Assumptions\Extensions
  */
-class AssumeTest extends TestCase
+trait System
 {
     /**
-     * @test
-     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
-     * @expectedExceptionMessage Should stop here...
+     * @param string $atLeast
+     * @param string $message
      */
-    public function throwExceptionWithWrongAssumption()
+    public static function assumePhpVersion($atLeast, $message = '')
     {
-        assumeExtensionLoaded('SPL');
-        assumePhpVersion('5.6');
-        assumeThat('test', isNonEmptyString());
-        assumeNoException(null);
-        assumeNotNull(1, 2, 3);
-        assumeTrue(true, 'Assume "true" failed.');
-        assumeFalse(false, 'Assume "false" failed.');
-        assumeFalse(true, 'Should stop here...');
+        assumeTrue(version_compare(phpversion(), $atLeast, '>='), $message);
+    }
+
+    public static function assumeExtensionLoaded($extension, $message = '')
+    {
+        assumeTrue(extension_loaded($extension), $message);
     }
 }

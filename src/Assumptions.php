@@ -74,3 +74,33 @@ if (!function_exists('assumeNoException')) {
         );
     }
 }
+
+if (!function_exists('assumePhpVersion')) {
+    /**
+     * Make an assumption and throw
+     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     */
+    function assumePhpVersion()
+    {
+        $args = func_get_args();
+        call_user_func_array(
+            array('MehrAlsNix\Assumptions\Assume', 'assumePhpVersion'),
+            $args
+        );
+    }
+}
+
+if (!function_exists('assumeExtensionLoaded')) {
+    /**
+     * Make an assumption and throw
+     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     */
+    function assumeExtensionLoaded()
+    {
+        $args = func_get_args();
+        call_user_func_array(
+            array('MehrAlsNix\Assumptions\Assume', 'assumeExtensionLoaded'),
+            $args
+        );
+    }
+}

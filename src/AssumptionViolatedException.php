@@ -31,12 +31,12 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
     private $assumption;
 
     /**
-     * @var
+     * @var bool
      */
     private $valueMatcher = true;
 
     /**
-     * @var
+     * @var string
      */
     private $value;
 
@@ -48,7 +48,7 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
     /**
      * {@inheritdoc}
      *
-     * @param string $assumption
+     * @param mixed $value
      * @param Matcher $matcher
      * @param string $message
      */
@@ -72,14 +72,14 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
         if ($this->valueMatcher) {
             // a value was passed in when this instance was constructed; print it
             if ($this->assumption !== null) {
-                $description .= ": ";
+                $description .= ': ';
             }
 
-            $description .= "got: ";
+            $description .= 'got: ';
             $description .= print_r($this->value, true);
 
             if ($this->matcher !== null) {
-                $description .= ", expected: ";
+                $description .= ', expected: ';
                 $description .= $this->matcher;
             }
         }

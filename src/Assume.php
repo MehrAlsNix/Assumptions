@@ -25,6 +25,8 @@ use Hamcrest\Matcher;
  */
 class Assume
 {
+    use Extensions\System;
+
     /**
      * @param boolean $bool
      * @param string $message optional
@@ -53,8 +55,6 @@ class Assume
      * @param string $message optional
      *
      * @throws AssumptionViolatedException
-     *
-     * @factory
      */
     public static function assumeThat($actual, Matcher $matcher, $message = '')
     {
