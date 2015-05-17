@@ -56,6 +56,7 @@ class AssumptionViolatedException extends \PHPUnit_Framework_IncompleteTestError
     {
         $this->value = json_encode($value);
         $this->matcher = $matcher;
+        $this->assumption = debug_backtrace()[1]['function'];
 
         parent::__construct($this->describe($message));
     }
