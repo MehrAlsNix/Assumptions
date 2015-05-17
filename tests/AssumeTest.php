@@ -17,7 +17,6 @@
 
 namespace MehrAlsNix\Assumptions\Tests;
 
-use MehrAlsNix\Assumptions\Assume;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**
@@ -28,13 +27,12 @@ class AssumeTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
     public function throwExceptionWithWrongAssumption()
     {
-        $this->assertEmpty(assumeNoException(null));
-        $this->assertEmpty(assumeNotNull(1, 2, 3));
-        $this->assertEmpty(assumeTrue(true, 'Assume "true" failed.'));
+        assumeNoException(null);
+        assumeNotNull(1, 2, 3);
+        assumeTrue(true, 'Assume "true" failed.');
         assumeFalse(true, 'Assume "false" failed.');
     }
 }
