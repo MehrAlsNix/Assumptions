@@ -1,6 +1,10 @@
 {
   "name": "mehr-als-nix/assumptions",
-  "description": "Assumptions",
+  "description": "PHPUnit implementation of the junit assumptions feature.",
+  "keywords": [
+    "phpunit",
+    "testing"
+  ],
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
