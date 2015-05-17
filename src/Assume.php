@@ -65,11 +65,11 @@ class Assume
     }
 
     /**
-     * @param ...$objects
+     * @param mixed ...$items
      */
-    public static function assumeNotNull(...$objects)
+    public static function assumeNotNull(...$items)
     {
-        assumeThat($objects, everyItem(notNullValue()));
+        assumeThat($items, everyItem(notNullValue()));
     }
 
     /**
