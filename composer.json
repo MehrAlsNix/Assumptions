@@ -22,6 +22,9 @@
     "psr-4": {
       "MehrAlsNix\\Assumptions\\": "src",
       "MehrAlsNix\\Assumptions\\Tests\\": "tests"
-    }
+    },
+    "files": [
+      "src/Assumptions.php"
+    ]
   }
 }

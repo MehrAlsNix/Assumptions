@@ -33,7 +33,7 @@ class Assume
      */
     public static function assumeTrue($bool, $message = '')
     {
-        self::assumeThat($bool, is(true), $message);
+        assumeThat($bool, is(true), $message);
     }
 
     /**
@@ -44,7 +44,7 @@ class Assume
      */
     public static function assumeFalse($bool, $message = '')
     {
-        self::assumeThat($bool, is(false), $message);
+        assumeThat($bool, is(false), $message);
     }
 
     /**
@@ -53,6 +53,8 @@ class Assume
      * @param string $message optional
      *
      * @throws AssumptionViolatedException
+     *
+     * @factory
      */
     public static function assumeThat($actual, Matcher $matcher, $message = '')
     {
@@ -66,7 +68,7 @@ class Assume
      */
     public static function assumeNotNull(...$objects)
     {
-        self::assumeThat($objects, everyItem(notNullValue()));
+        assumeThat($objects, everyItem(notNullValue()));
     }
 
     /**
@@ -77,6 +79,6 @@ class Assume
      */
     public static function assumeNoException($e, $message = '')
     {
-        self::assumeThat($e, not(anInstanceOf('Exception')), $message);
+        assumeThat($e, not(anInstanceOf('Exception')), $message);
     }
 }
