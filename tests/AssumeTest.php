@@ -22,6 +22,7 @@ use PHPUnit_Framework_TestCase as TestCase;
 /**
  * Class AssumeTest
  * @package MehrAlsNix\Assumptions\Tests
+ * @requires PHP 5.6
  */
 class AssumeTest extends TestCase
 {
@@ -31,9 +32,11 @@ class AssumeTest extends TestCase
      */
     public function throwExceptionWithWrongAssumption()
     {
+        assumeThat('test', isNonEmptyString());
         assumeNoException(null);
         assumeNotNull(1, 2, 3);
         assumeTrue(true, 'Assume "true" failed.');
-        assumeFalse(true, 'Assume "false" failed.');
+        assumeFalse(false, 'Assume "false" failed.');
+        assumeFalse(true, 'Should stop here..');
     }
 }
