@@ -20,9 +20,20 @@ You can read more of it on their wiki:
 $ composer require --dev mehr-als-nix/assumptions:1.*
 ```
 
+```
+$ composer update
+```
+
 ## Usage
 
-tpd
+```
+public function testMethod()
+{
+    assumeTrue((bool) getenv('ENV_TEST'), 'Environment Variable not set.');
+    // if environment variable ENV_TEST is not set, then the test will be skipped.
+    ...
+}
+```
 
 ## Requirements
 
