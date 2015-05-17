@@ -17,7 +17,7 @@ You can read more of it on their wiki:
 ## Installation
 
 ```
-$ composer require --dev MehrAlsNix/Assumptions:1.*
+$ composer require --dev mehr-als-nix/Assumptions:1.*
 ```
 
 ## Usage
