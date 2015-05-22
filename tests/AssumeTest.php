@@ -55,7 +55,7 @@ class AssumeTest extends TestCase
     public function assumePhpVersion()
     {
         assumePhpVersion('5.6');
-        assumePhpVersion('5.7', 'Version not exists.');
+        assumePhpVersion('9.1', 'Version not exists.');
     }
 
     /**
