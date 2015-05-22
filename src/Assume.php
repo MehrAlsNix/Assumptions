@@ -80,6 +80,6 @@ class Assume
      */
     public static function assumeNoException($e, $message = '')
     {
-        assumeThat($e, not(anInstanceOf('Exception')), $message);
+        assumeThat($e, nullValue(), $message);
     }
 }

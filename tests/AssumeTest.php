@@ -31,15 +31,85 @@ class AssumeTest extends TestCase
      * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
      * @expectedExceptionMessage Unable to connect
      */
-    public function throwExceptionWithWrongAssumption()
+    public function assumeSocket()
+    {
+        assumeSocket('127.0.0.1', 123);
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage Extension does not exists.
+     */
+    public function assumeExtensionLoaded()
     {
         assumeExtensionLoaded('SPL');
+        assumeExtensionLoaded('TEST', 'Extension does not exists.');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage Version not exists.
+     */
+    public function assumePhpVersion()
+    {
         assumePhpVersion('5.6');
+        assumePhpVersion('5.7', 'Version not exists.');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage False  cannot be true.
+     */
+    public function assumeThat()
+    {
         assumeThat('test', isNonEmptyString());
+        assumeThat(false, is(true), 'False  cannot be true.');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage Exception thrown.
+     */
+    public function assumeNoException()
+    {
         assumeNoException(null);
-        assumeNotNull(1, 2, 3);
-        assumeTrue(true, 'Assume "true" failed.');
-        assumeFalse(false, 'Assume "false" failed.');
-        assumeSocket('127.0.0.1', 123);
+        assumeNoException(new \RuntimeException(), 'Exception thrown.');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage There were at least one `NULL` value.
+     */
+    public function assumeNotNull()
+    {
+        assumeNotNull(1, '2', 3.1);
+        assumeNotNull(null, 'There were at least one `NULL` value.');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage This is not true.
+     */
+    public function assumeTrue()
+    {
+        assumeTrue(true);
+        assumeTrue(false, 'This is not true.');
+    }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage This is not false.
+     */
+    public function assumeFalse()
+    {
+        assumeFalse(false);
+        assumeFalse(true, 'This is not false.');
     }
 }
