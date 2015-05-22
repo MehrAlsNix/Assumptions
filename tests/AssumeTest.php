@@ -72,17 +72,6 @@ class AssumeTest extends TestCase
     /**
      * @test
      * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
-     * @expectedExceptionMessage Exception thrown.
-     */
-    public function assumeNoException()
-    {
-        assumeNoException(null);
-        assumeNoException(new \RuntimeException(), 'Exception thrown.');
-    }
-
-    /**
-     * @test
-     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
      * @expectedExceptionMessage There were at least one `NULL` value.
      */
     public function assumeNotNull()

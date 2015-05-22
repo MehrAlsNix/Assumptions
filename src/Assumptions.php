@@ -56,20 +56,6 @@ if (!function_exists('assumeNotNull')) {
     }
 }
 
-if (!function_exists('assumeNoException')) {
-    /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
-     */
-    function assumeNoException(...$args)
-    {
-        call_user_func_array(
-            array('MehrAlsNix\Assumptions\Assume', 'assumeNoException'),
-            $args
-        );
-    }
-}
-
 if (!function_exists('assumePhpVersion')) {
     /**
      * Make an assumption and throw

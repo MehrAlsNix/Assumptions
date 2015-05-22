@@ -71,15 +71,4 @@ class Assume
     {
         assumeThat($items, everyItem(notNullValue()));
     }
-
-    /**
-     * @param \Exception $e
-     * @param string $message
-     *
-     * @throws AssumptionViolatedException
-     */
-    public static function assumeNoException($e, $message = '')
-    {
-        assumeThat($e, nullValue(), $message);
-    }
 }
