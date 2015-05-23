@@ -24,13 +24,7 @@ then you should give **Assumption for PHPUnit** a try.
 
 ## Installation
 
-```
-$ composer require --dev mehr-als-nix/assumptions:1.*
-```
-
-```
-$ composer install
-```
+[see wiki](https://github.com/MehrAlsNix/Assumptions/wiki/Installation)
 
 ## Usage
 
