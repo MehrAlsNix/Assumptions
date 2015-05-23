@@ -119,3 +119,15 @@ if (!function_exists('assumeFreeDiskSpace')) {
         call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeFreeDiskSpace'], $args);
     }
 }
+
+if (!function_exists('assumeCfgVar')) {
+    /**
+     * Make an assumption and throw
+     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * @param ...$args
+     */
+    function assumeCfgVar(...$args)
+    {
+        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeCfgVar'], $args);
+    }
+}

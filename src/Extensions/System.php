@@ -62,4 +62,13 @@ trait System
             assumeThat(disk_free_space($directory), is(greaterThanOrEqualTo($available)), $message);
         }
     }
+
+    /**
+     * @param string $name
+     * @param string $message
+     */
+    public static function assumeCfgVar($name,  $message = '')
+    {
+        assumeThat(get_cfg_var($name), is(not(false)), $message);
+    }
 }

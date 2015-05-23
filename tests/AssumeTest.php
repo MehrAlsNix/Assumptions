@@ -123,4 +123,15 @@ class AssumeTest extends TestCase
         assumeFreeDiskSpace(__DIR__);
         assumeFreeDiskSpace(__DIR__, 9999999999999999.0, 'No free disc space.');
     }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage Not found in php.ini
+     */
+    public function assumeCfgVar()
+    {
+        assumeCfgVar('memory_limit');
+        assumeCfgVar('does_not_exist', 'Not found in php.ini');
+    }
 }
