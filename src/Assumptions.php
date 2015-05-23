@@ -107,3 +107,15 @@ if (!function_exists('assumeEnvironment')) {
         call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeEnvironment'], $args);
     }
 }
+
+if (!function_exists('assumeFreeDiskSpace')) {
+    /**
+     * Make an assumption and throw
+     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * @param ...$args
+     */
+    function assumeFreeDiskSpace(...$args)
+    {
+        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeFreeDiskSpace'], $args);
+    }
+}

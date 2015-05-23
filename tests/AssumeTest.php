@@ -112,4 +112,15 @@ class AssumeTest extends TestCase
         assumeEnvironment('PATH');
         assumeEnvironment('THIS_IS_NOT_AN_ENV', 'Environment not set.');
     }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage No free disc space.
+     */
+    public function assumeFreeDiskSpace()
+    {
+        assumeFreeDiskSpace(__DIR__);
+        assumeFreeDiskSpace(__DIR__, 9999999999999999.0, 'No free disc space.');
+    }
 }

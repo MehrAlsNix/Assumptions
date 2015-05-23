@@ -49,4 +49,17 @@ trait System
     {
         assumeTrue((bool) getenv($varname), $message);
     }
+
+    /**
+     * @param string $directory
+     * @param string $message
+     */
+    public static function assumeFreeDiskSpace($directory, $available = null,  $message = '')
+    {
+        if ($available === null) {
+            assumeThat(disk_free_space($directory), is(not(false)), $message);
+        } else {
+            assumeThat(disk_free_space($directory), is(greaterThanOrEqualTo($available)), $message);
+        }
+    }
 }
