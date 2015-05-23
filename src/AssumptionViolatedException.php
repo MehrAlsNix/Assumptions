@@ -56,7 +56,10 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
     {
         $this->value = json_encode($value);
         $this->matcher = $matcher;
-        $this->assumption = debug_backtrace()[1]['function'];
+
+        if (function_exists('debug_backtrace')) {
+            $this->assumption = debug_backtrace()[1]['function'];
+        }
 
         parent::__construct($this->describe($message));
     }
@@ -76,7 +79,7 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
             }
 
             $description .= 'got: ';
-            $description .= print_r($this->value, true);
+            $description .= $this->value;
 
             if ($this->matcher !== null) {
                 $description .= ', expected: ';
