@@ -95,3 +95,15 @@ if (!function_exists('assumeSocket')) {
         call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeSocket'], $args);
     }
 }
+
+if (!function_exists('assumeEnvironment')) {
+    /**
+     * Make an assumption and throw
+     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * @param ...$args
+     */
+    function assumeEnvironment(...$args)
+    {
+        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeEnvironment'], $args);
+    }
+}

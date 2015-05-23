@@ -40,4 +40,13 @@ trait System
     {
         assumeTrue(extension_loaded($extension), $message);
     }
+
+    /**
+     * @param string $varname
+     * @param string $message
+     */
+    public static function assumeEnvironment($varname, $message = '')
+    {
+        assumeTrue((bool) getenv($varname), $message);
+    }
 }

@@ -101,4 +101,15 @@ class AssumeTest extends TestCase
         assumeFalse(false);
         assumeFalse(true, 'This is not false.');
     }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage Environment not set.
+     */
+    public function assumeEnvironment()
+    {
+        assumeEnvironment('OS');
+        assumeEnvironment('THIS_IS_NOT_AN_ENV', 'Environment not set.');
+    }
 }
