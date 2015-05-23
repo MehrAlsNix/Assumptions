@@ -4,6 +4,16 @@
 
 ## Introduction
 
+Assumptions can be used to skip tests when common preconditions, like the PHP Version or installed extensions, are not met.
+
+The default PHPUnit runner treats tests with failing assumptions as skipped. Custom runners may behave differently.
+
+We have included several assumptions like `assumeTrue`, `assumeExtensionLoaded`,... by default. All of those functionalities are subsumed in assumeThat, with the appropriate `Hamcrest` matcher.
+
+A failing assumption in a `@before` or `@beforeClass` method will have the same effect as a failing assumption in each `@test` method of the class.
+
+***
+
 The concept behind **Assumptions for PHPUnit** is based on the adequate junit feature, which is documented on their [wiki - Assumptions with assume](https://github.com/junit-team/junit/wiki/Assumptions-with-assume)
 
 ## Note
@@ -15,7 +25,7 @@ If you are familiar in using `@requires` annotation to dedicate that a given [re
 But if you want to have
 - code completion
 - better readability
-- finer controll
+- finer control
 - more requirement abilities
 
 then you should give **Assumption for PHPUnit** a try.
