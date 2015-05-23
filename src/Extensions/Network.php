@@ -33,7 +33,7 @@ trait Network
     {
         $socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
-        assumeThat($socket, not(is(false)), self::$SOCK_ERR_MSG . socket_last_error($socket));
-        assumeThat(@socket_connect($socket, $address, $port), not(is(false)), 'Unable to connect: ' . $address . ':' . $port);
+        assumeThat($socket, is(not(false)), self::$SOCK_ERR_MSG . socket_last_error($socket));
+        assumeThat(@socket_connect($socket, $address, $port), is(not(false)), 'Unable to connect: ' . $address . ':' . $port);
     }
 }
