@@ -109,7 +109,7 @@ class AssumeTest extends TestCase
      */
     public function assumeEnvironment()
     {
-        assumeEnvironment('OS');
+        assumeEnvironment('PATH');
         assumeEnvironment('THIS_IS_NOT_AN_ENV', 'Environment not set.');
     }
 }
