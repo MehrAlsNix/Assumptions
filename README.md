@@ -34,18 +34,11 @@ then you should give **Assumption for PHPUnit** a try.
 
 ## Installation
 
-[see wiki](https://github.com/MehrAlsNix/Assumptions/wiki/Installation)
+[see wiki:installation](https://github.com/MehrAlsNix/Assumptions/wiki/1.-Installation)
 
-## Usage
+## Examples
 
-```
-public function testMethod()
-{
-    assumeTrue((bool) getenv('ENV_TEST'), 'Environment Variable not set.');
-    // if environment variable ENV_TEST is not set, then the test will be skipped.
-    ...
-}
-```
+[see wiki:examples](https://github.com/MehrAlsNix/Assumptions/wiki/2.-Examples)
 
 ## Requirements
 
