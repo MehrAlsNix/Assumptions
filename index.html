@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Assumptions by MehrAlsNix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Assumptions</h1>
+      <h2 class="project-tagline">Assumptions can be used to skip tests when common preconditions, like the PHP Version or installed extensions, are not met.</h2>
+      <a href="https://github.com/MehrAlsNix/Assumptions" class="btn">View on GitHub</a>
+      <a href="https://github.com/MehrAlsNix/Assumptions/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/MehrAlsNix/Assumptions/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="assumptions-for-phpunit" class="anchor" href="#assumptions-for-phpunit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assumptions for PHPUnit</h1>
+
+<p><a href="https://travis-ci.org/MehrAlsNix/Assumptions"><img src="https://travis-ci.org/MehrAlsNix/Assumptions.svg?branch=develop" alt="Build Status"></a> <a href="https://codeclimate.com/github/MehrAlsNix/Assumptions"><img src="https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/gpa.svg" alt="Code Climate"></a> <a href="https://codeclimate.com/github/MehrAlsNix/Assumptions/coverage"><img src="https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368"><img src="https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368/badge.svg?style=flat" alt="Dependency Status"></a></p>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Assumptions can be used to skip tests when common preconditions, like the PHP Version or installed extensions, are not met.</p>
+
+<p>The default PHPUnit runner treats tests with failing assumptions as skipped. Custom runners may behave differently.</p>
+
+<p>We have included several assumptions like <code>assumeTrue</code>, <code>assumeExtensionLoaded</code>,... by default. All of those functionalities are subsumed in assumeThat, with the appropriate <code>Hamcrest</code> matcher.</p>
+
+<p>A failing assumption in a <code>@before</code> or <code>@beforeClass</code> method will have the same effect as a failing assumption in each <code>@test</code> method of the class.</p>
+
+<hr>
+
+<p>The concept behind <strong>Assumptions for PHPUnit</strong> is based on the adequate junit feature, which is documented on their <a href="https://github.com/junit-team/junit/wiki/Assumptions-with-assume">wiki - Assumptions with assume</a></p>
+
+<h2>
+<a id="note" class="anchor" href="#note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note</h2>
+
+<p>There is a similar feature in PHPUnit called <a href="https://phpunit.de/manual/current/en/appendixes.annotations.html#appendixes.annotations.requires">@requires</a>!</p>
+
+<p>If you are familiar in using <code>@requires</code> annotation to dedicate that a given <a href="https://phpunit.de/manual/current/en/incomplete-and-skipped-tests.html#incomplete-and-skipped-tests.requires.tables.api">requirement</a> would be given and you are happy about, then you just do not need the use of <strong>Assumption for PHPUnit</strong>.</p>
+
+<p>But if you want to have</p>
+
+<ul>
+<li>code completion</li>
+<li>better readability</li>
+<li>finer control</li>
+<li>more requirement abilities</li>
+</ul>
+
+<p>then you should give <strong>Assumption for PHPUnit</strong> a try.</p>
+
+<hr>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p><a href="https://github.com/MehrAlsNix/Assumptions/wiki/Installation">see wiki</a></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<pre><code>public function testMethod()
+{
+    assumeTrue((bool) getenv('ENV_TEST'), 'Environment Variable not set.');
+    // if environment variable ENV_TEST is not set, then the test will be skipped.
+    ...
+}
+</code></pre>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>PHP &gt;= 5.6</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/MehrAlsNix/Assumptions">Assumptions</a> is maintained by <a href="https://github.com/MehrAlsNix">MehrAlsNix</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
