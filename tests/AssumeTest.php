@@ -22,10 +22,17 @@ use PHPUnit_Framework_TestCase as TestCase;
 /**
  * Class AssumeTest
  * @package MehrAlsNix\Assumptions\Tests
- * @requires PHP 5.6
  */
 class AssumeTest extends TestCase
 {
+    /**
+     * This method is called before the first test of this test class is run.
+     */
+    public static function setUpBeforeClass()
+    {
+        assumePhpVersion('5.6');
+    }
+
     /**
      * @test
      * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
