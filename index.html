@@ -20,7 +20,7 @@
 
     <section class="main-content">
       <h1>
-<a id="assumptions-for-phpunit" class="anchor" href="#assumptions-for-phpunit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assumptions for PHPUnit</h1>
+<a id="assumptions-for-phpunit" class="anchor" href="#assumptions-for-phpunit" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assumptions for PHPUnit.</h1>
 
 <p><a href="https://travis-ci.org/MehrAlsNix/Assumptions"><img src="https://travis-ci.org/MehrAlsNix/Assumptions.svg?branch=develop" alt="Build Status"></a> <a href="https://codeclimate.com/github/MehrAlsNix/Assumptions"><img src="https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/gpa.svg" alt="Code Climate"></a> <a href="https://codeclimate.com/github/MehrAlsNix/Assumptions/coverage"><img src="https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/coverage.svg" alt="Test Coverage"></a> <a href="https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368"><img src="https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368/badge.svg?style=flat" alt="Dependency Status"></a></p>
 
@@ -31,7 +31,7 @@
 
 <p>The default PHPUnit runner treats tests with failing assumptions as skipped. Custom runners may behave differently.</p>
 
-<p>We have included several assumptions like <code>assumeTrue</code>, <code>assumeExtensionLoaded</code>,... by default. All of those functionalities are subsumed in assumeThat, with the appropriate <code>Hamcrest</code> matcher.</p>
+<p>We have included several assumptions like <code>assumeTrue</code>, <code>assumeExtensionLoaded</code>,... by default. All of those functions are subsumed in assumeThat, with the appropriate <code>Hamcrest</code> matcher.</p>
 
 <p>A failing assumption in a <code>@before</code> or <code>@beforeClass</code> method will have the same effect as a failing assumption in each <code>@test</code> method of the class.</p>
 
@@ -62,18 +62,12 @@
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<p><a href="https://github.com/MehrAlsNix/Assumptions/wiki/Installation">see wiki</a></p>
+<p><a href="https://github.com/MehrAlsNix/Assumptions/wiki/1.-Installation">see wiki:installation</a></p>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
 
-<pre><code>public function testMethod()
-{
-    assumeTrue((bool) getenv('ENV_TEST'), 'Environment Variable not set.');
-    // if environment variable ENV_TEST is not set, then the test will be skipped.
-    ...
-}
-</code></pre>
+<p><a href="https://github.com/MehrAlsNix/Assumptions/wiki/2.-Examples">see wiki:examples</a></p>
 
 <h2>
 <a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
