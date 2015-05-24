@@ -17,7 +17,6 @@
 
 namespace MehrAlsNix\Assumptions;
 
-use PHPUnit_TextUI_ResultPrinter as ResultPrinter;
 use PHPUnit_Framework_TestResult as TestResult;
 
 /**
@@ -25,7 +24,7 @@ use PHPUnit_Framework_TestResult as TestResult;
  * @package MehrAlsNix\Assumptions
  * @codeCoverageIgnore
  */
-class Printer extends ResultPrinter
+class ResultPrinter extends \PHPUnit_TextUI_ResultPrinter
 {
     /**
      * @param TestResult $result
