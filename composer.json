@@ -1,6 +1,6 @@
 {
   "name": "mehr-als-nix/assumptions",
-  "description": "PHPUnit implementation of the junit assumptions feature.",
+  "description": "Assumptions can be used to skip tests when common preconditions, like the PHP Version or installed extensions, are not met.",
   "keywords": [
     "phpunit",
     "testing"
@@ -15,7 +15,7 @@
   ],
   "require": {
     "php": ">=5.6",
-    "hamcrest/hamcrest-php": "1.2.*",
+    "hamcrest/hamcrest-php": "~1",
     "phpunit/phpunit": "~4"
   },
   "require-dev": {

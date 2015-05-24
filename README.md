@@ -1,4 +1,4 @@
-# Assumptions
+# Assumptions for PHPUnit.
 
 [![Build Status](https://travis-ci.org/MehrAlsNix/Assumptions.svg?branch=develop)](https://travis-ci.org/MehrAlsNix/Assumptions) [![Code Climate](https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/gpa.svg)](https://codeclimate.com/github/MehrAlsNix/Assumptions) [![Test Coverage](https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/coverage.svg)](https://codeclimate.com/github/MehrAlsNix/Assumptions/coverage) [![Dependency Status](https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368)
 
@@ -8,7 +8,7 @@ Assumptions can be used to skip tests when common preconditions, like the PHP Ve
 
 The default PHPUnit runner treats tests with failing assumptions as skipped. Custom runners may behave differently.
 
-We have included several assumptions like `assumeTrue`, `assumeExtensionLoaded`,... by default. All of those functionalities are subsumed in assumeThat, with the appropriate `Hamcrest` matcher.
+We have included several assumptions like `assumeTrue`, `assumeExtensionLoaded`,... by default. All of those functions are subsumed in assumeThat, with the appropriate `Hamcrest` matcher.
 
 A failing assumption in a `@before` or `@beforeClass` method will have the same effect as a failing assumption in each `@test` method of the class.
 
