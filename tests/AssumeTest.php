@@ -123,12 +123,12 @@ class AssumeTest extends TestCase
     /**
      * @test
      * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
-     * @expectedExceptionMessage No free disc space.
+     * @expectedExceptionMessage No free disk space.
      */
     public function assumeFreeDiskSpace()
     {
         assumeFreeDiskSpace(__DIR__);
-        assumeFreeDiskSpace(__DIR__, 9999999999999999.0, 'No free disc space.');
+        assumeFreeDiskSpace(__DIR__, 9999999999999999.0, 'No free disk space.');
     }
 
     /**
