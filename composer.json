@@ -1,12 +1,14 @@
 {
   "name": "mehr-als-nix/assumptions",
   "description": "Assumptions can be used to skip tests when common preconditions, like the PHP Version or installed extensions, are not met.",
+  "homepage": "http://mehralsnix.github.io/Assumptions",
   "keywords": [
     "phpunit",
     "testing"
   ],
-  "minimum-stability": "stable",
   "license": "MIT",
+  "type": "library",
+  "minimum-stability": "stable",
   "authors": [
     {
       "name": "Siad Ardroumli",
