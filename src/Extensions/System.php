@@ -93,4 +93,18 @@ trait System
     {
         assumeThat(get_cfg_var($name), is(not(false)), $message);
     }
+
+    /**
+     * Assumes that a specific OS is used.
+     *
+     * @param string $pattern
+     * @param string $message
+     *
+     * @return void
+     */
+    public static function assumeOperatingSystem($pattern,  $message = '')
+    {
+        $regEx = sprintf('/%s/i', addcslashes($pattern, '/'));
+        assumeThat(php_uname('s'), matchesPattern($regEx), $message);
+    }
 }

@@ -141,4 +141,20 @@ class AssumeTest extends TestCase
         assumeCfgVar('memory_limit');
         assumeCfgVar('does_not_exist', 'Not found in php.ini');
     }
+
+    /**
+     * @test
+     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
+     * @expectedExceptionMessage Not the right OS.
+     */
+    public function assumeOperatingSystem()
+    {
+        if (strtolower(substr(php_uname('s'), 0, 3)) === 'win') {
+            assumeOperatingSystem('Win');
+            assumeOperatingSystem('Linux', 'Not the right OS.');
+        } else {
+            assumeOperatingSystem('Linux');
+            assumeOperatingSystem('Win', 'Not the right OS.');
+        }
+    }
 }

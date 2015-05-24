@@ -155,3 +155,15 @@ if (!function_exists('assumeCfgVar')) {
         call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeCfgVar'], $args);
     }
 }
+
+if (!function_exists('assumeOperatingSystem')) {
+    /**
+     * Make an assumption and throw
+     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * @param ...$args
+     */
+    function assumeOperatingSystem(...$args)
+    {
+        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeOperatingSystem'], $args);
+    }
+}
