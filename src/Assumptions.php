@@ -16,28 +16,46 @@ if (!function_exists('assumeThat')) {
 
 if (!function_exists('assumeTrue')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * Assumes that a specific value is `true`.
+     *
+     * @param boolean $bool
+     * @param string $message optional
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
+     *
+     * @see \MehrAlsNix\Assumptions\Assume::assumeTrue
      */
-    function assumeTrue(...$args)
+    function assumeTrue($bool, $message = '')
     {
-        call_user_func_array(
+        call_user_func(
             array('MehrAlsNix\Assumptions\Assume', 'assumeTrue'),
-            $args
+            $bool,
+            $message
         );
     }
 }
 
 if (!function_exists('assumeFalse')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * Assumes that a specific value is `false`.
+     *
+     * @param boolean $bool
+     * @param string $message optional
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
+     *
+     * @see \MehrAlsNix\Assumptions\Assume::assumeFalse
      */
-    function assumeFalse(...$args)
+    function assumeFalse($bool, $message = '')
     {
-        call_user_func_array(
+        call_user_func(
             array('MehrAlsNix\Assumptions\Assume', 'assumeFalse'),
-            $args
+            $bool,
+            $message
         );
     }
 }
@@ -110,9 +128,15 @@ if (!function_exists('assumeEnvironment')) {
 
 if (!function_exists('assumeFreeDiskSpace')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * Assumes that a specific directory has free disk space.
+     *
      * @param ...$args
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
+     *
+     * @see \MehrAlsNix\Assumptions\Assume::assumeFreeDiskSpace
      */
     function assumeFreeDiskSpace(...$args)
     {

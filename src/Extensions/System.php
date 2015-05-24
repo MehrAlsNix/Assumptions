@@ -24,35 +24,53 @@ namespace MehrAlsNix\Assumptions\Extensions;
 trait System
 {
     /**
+     * Assumes that a specific version string is greater or equal to the
+     * PHP version.
+     *
      * @param string $atLeast
      * @param string $message
+     *
+     * @return void
      */
     public static function assumePhpVersion($atLeast, $message = '')
     {
-        assumeTrue(version_compare(phpversion(), $atLeast, '>='), $message);
+        assumeThat(version_compare(phpversion(), $atLeast, '>='), is(true), $message);
     }
 
     /**
+     * Assumes that a specific PHP extension is loaded.
+     *
      * @param string $extension
      * @param string $message
+     *
+     * @return void
      */
     public static function assumeExtensionLoaded($extension, $message = '')
     {
-        assumeTrue(extension_loaded($extension), $message);
+        assumeThat(extension_loaded($extension), is(true), $message);
     }
 
     /**
+     * Assumes that a specific environment variable is set.
+     *
      * @param string $varname
      * @param string $message
+     *
+     * @return void
      */
     public static function assumeEnvironment($varname, $message = '')
     {
-        assumeTrue((bool) getenv($varname), $message);
+        assumeThat(getenv($varname), is(not(false)), $message);
     }
 
     /**
+     * Assumes that a specific directory has free disk space.
+     *
      * @param string $directory
+     * @param float  $available optional
      * @param string $message
+     *
+     * @return void
      */
     public static function assumeFreeDiskSpace($directory, $available = null,  $message = '')
     {
@@ -64,8 +82,12 @@ trait System
     }
 
     /**
+     * Assumes that a specific PHP configuration option is set (`php.ini`).
+     *
      * @param string $name
      * @param string $message
+     *
+     * @return void
      */
     public static function assumeCfgVar($name,  $message = '')
     {

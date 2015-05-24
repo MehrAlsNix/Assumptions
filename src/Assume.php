@@ -29,8 +29,12 @@ class Assume
     use Extensions\System;
 
     /**
+     * Assumes that a specific value is `true`.
+     *
      * @param boolean $bool
      * @param string $message optional
+     *
+     * @return void
      *
      * @throws AssumptionViolatedException
      */
@@ -40,8 +44,12 @@ class Assume
     }
 
     /**
+     * Assumes that a specific value is `false`.
+     *
      * @param boolean $bool
      * @param string $message
+     *
+     * @return void
      *
      * @throws AssumptionViolatedException
      */
@@ -51,9 +59,13 @@ class Assume
     }
 
     /**
+     * Assumes that a specific value matches a specific hamcrest matcher.
+     *
      * @param mixed $actual
      * @param Matcher $matcher
      * @param string $message optional
+     *
+     * @return void
      *
      * @throws AssumptionViolatedException
      */
