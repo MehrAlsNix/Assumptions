@@ -16,6 +16,7 @@
  */
 
 namespace MehrAlsNix\Assumptions\Extensions;
+use MehrAlsNix\Assumptions\AssumptionViolatedException;
 
 /**
  * Trait System
@@ -31,6 +32,8 @@ trait System
      * @param string $message
      *
      * @return void
+     *
+     * @throws AssumptionViolatedException
      */
     public static function assumePhpVersion($atLeast, $message = '')
     {
@@ -44,6 +47,8 @@ trait System
      * @param string $message
      *
      * @return void
+     *
+     * @throws AssumptionViolatedException
      */
     public static function assumeExtensionLoaded($extension, $message = '')
     {
@@ -57,6 +62,8 @@ trait System
      * @param string $message
      *
      * @return void
+     *
+     * @throws AssumptionViolatedException
      */
     public static function assumeEnvironment($varname, $message = '')
     {
@@ -71,8 +78,10 @@ trait System
      * @param string $message
      *
      * @return void
+     *
+     * @throws AssumptionViolatedException
      */
-    public static function assumeFreeDiskSpace($directory, $available = null,  $message = '')
+    public static function assumeFreeDiskSpace($directory, $available = null, $message = '')
     {
         if ($available === null) {
             assumeThat(disk_free_space($directory), is(not(false)), $message);
@@ -88,8 +97,10 @@ trait System
      * @param string $message
      *
      * @return void
+     *
+     * @throws AssumptionViolatedException
      */
-    public static function assumeCfgVar($name,  $message = '')
+    public static function assumeCfgVar($name, $message = '')
     {
         assumeThat(get_cfg_var($name), is(not(false)), $message);
     }
@@ -101,8 +112,10 @@ trait System
      * @param string $message
      *
      * @return void
+     *
+     * @throws AssumptionViolatedException
      */
-    public static function assumeOperatingSystem($pattern,  $message = '')
+    public static function assumeOperatingSystem($pattern, $message = '')
     {
         $regEx = sprintf('/%s/i', addcslashes($pattern, '/'));
         assumeThat(php_uname('s'), matchesPattern($regEx), $message);

@@ -1,15 +1,39 @@
 <?php
+/**
+ * Assumptions
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * @copyright 2015 MehrAlsNix (http://www.mehralsnix.de)
+ * @license   http://www.opensource.org/licenses/mit-license.php MIT
+ * @link      http://github.com/MehrAlsNix/Assumptions
+ */
 
 if (!function_exists('assumeThat')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * Assumes that a specific value matches a specific hamcrest matcher.
+     *
+     * @param mixed $actual
+     * @param \Hamcrest\Matcher $matcher
+     * @param string $message optional
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeThat(...$args)
+    function assumeThat($actual, \Hamcrest\Matcher $matcher, $message = '')
     {
-        call_user_func_array(
-            array('MehrAlsNix\Assumptions\Assume', 'assumeThat'),
-            $args
+        call_user_func(
+            ['MehrAlsNix\Assumptions\Assume', 'assumeThat'],
+            $actual,
+            $matcher,
+            $message
         );
     }
 }
@@ -62,67 +86,107 @@ if (!function_exists('assumeFalse')) {
 
 if (!function_exists('assumeNotNull')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * Assumes that one or more value(s) is/are not `null`.
+     *
+     * @param mixed $item [optional]
+     * @param mixed $_ [optional]
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeNotNull(...$args)
+    function assumeNotNull($item = null, $_ = null)
     {
+        $items = func_get_args();
         call_user_func_array(
-            array('MehrAlsNix\Assumptions\Assume', 'assumeNotNull'),
-            $args
+            ['MehrAlsNix\Assumptions\Assume', 'assumeNotNull'],
+            $items
         );
     }
 }
 
 if (!function_exists('assumePhpVersion')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * Assumes that a specific version string is greater or equal to the
+     * PHP version.
+     *
+     * @param string $atLeast
+     * @param string $message
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumePhpVersion(...$args)
+    function assumePhpVersion($atLeast, $message = '')
     {
-        call_user_func_array(
+        call_user_func(
             array('MehrAlsNix\Assumptions\Assume', 'assumePhpVersion'),
-            $args
+            $atLeast,
+            $message
         );
     }
 }
 
 if (!function_exists('assumeExtensionLoaded')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
+     * Assumes that a specific PHP extension is loaded.
+     *
+     * @param string $extension
+     * @param string $message
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeExtensionLoaded(...$args)
+    function assumeExtensionLoaded($extension, $message = '')
     {
-        call_user_func_array(
-            array('MehrAlsNix\Assumptions\Assume', 'assumeExtensionLoaded'),
-            $args
+        call_user_func(
+            ['MehrAlsNix\Assumptions\Assume', 'assumeExtensionLoaded'],
+            $extension,
+            $message
         );
     }
 }
 
 if (!function_exists('assumeSocket')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
-     * @param ...$args
+     * Assumes that a specified socket connection could be established.
+     *
+     * @param string $address
+     * @param int    $port
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeSocket(...$args)
+    function assumeSocket($address, $port = 0)
     {
-        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeSocket'], $args);
+        call_user_func(
+            ['MehrAlsNix\Assumptions\Assume', 'assumeSocket'],
+            $address,
+            $port
+        );
     }
 }
 
 if (!function_exists('assumeEnvironment')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
-     * @param ...$args
+     * Assumes that a specific environment variable is set.
+     *
+     * @param string $varname
+     * @param string $message
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeEnvironment(...$args)
+    function assumeEnvironment($varname, $message = '')
     {
-        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeEnvironment'], $args);
+        call_user_func(
+            ['MehrAlsNix\Assumptions\Assume', 'assumeEnvironment'],
+            $varname,
+            $message
+        );
     }
 }
 
@@ -130,40 +194,63 @@ if (!function_exists('assumeFreeDiskSpace')) {
     /**
      * Assumes that a specific directory has free disk space.
      *
-     * @param ...$args
+     * @param string $directory
+     * @param float  $available optional
+     * @param string $message
      *
      * @return void
      *
      * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
-     *
-     * @see \MehrAlsNix\Assumptions\Assume::assumeFreeDiskSpace
      */
-    function assumeFreeDiskSpace(...$args)
+    function assumeFreeDiskSpace($directory, $available = null,  $message = '')
     {
-        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeFreeDiskSpace'], $args);
+        call_user_func(
+            ['MehrAlsNix\Assumptions\Assume', 'assumeFreeDiskSpace'],
+            $directory,
+            $available,
+            $message
+        );
     }
 }
 
 if (!function_exists('assumeCfgVar')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
-     * @param ...$args
+     * Assumes that a specific PHP configuration option is set (`php.ini`).
+     *
+     * @param string $name
+     * @param string $message
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeCfgVar(...$args)
+    function assumeCfgVar($name, $message = '')
     {
-        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeCfgVar'], $args);
+        call_user_func(
+            ['MehrAlsNix\Assumptions\Assume', 'assumeCfgVar'],
+            $name,
+            $message
+        );
     }
 }
 
 if (!function_exists('assumeOperatingSystem')) {
     /**
-     * Make an assumption and throw
-     * {@link MehrAlsNix\Assumptions\AssumptionViolatedException} if it fails.
-     * @param ...$args
+     * Assumes that a specific OS is used.
+     *
+     * @param string $pattern
+     * @param string $message
+     *
+     * @return void
+     *
+     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeOperatingSystem(...$args)
+    function assumeOperatingSystem($pattern, $message = '')
     {
-        call_user_func_array(['MehrAlsNix\Assumptions\Assume', 'assumeOperatingSystem'], $args);
+        call_user_func(
+            ['MehrAlsNix\Assumptions\Assume', 'assumeOperatingSystem'],
+            $pattern,
+            $message
+        );
     }
 }

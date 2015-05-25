@@ -16,6 +16,7 @@
  */
 
 namespace MehrAlsNix\Assumptions\Extensions;
+use MehrAlsNix\Assumptions\AssumptionViolatedException;
 
 /**
  * Trait Network
@@ -26,8 +27,14 @@ trait Network
     private static $SOCK_ERR_MSG = 'Unable to create socket: ';
 
     /**
+     * Assumes that a specified socket connection could be established.
+     *
      * @param string $address
      * @param int    $port
+     *
+     * @return void
+     *
+     * @throws AssumptionViolatedException
      */
     public static function assumeSocket($address, $port = 0)
     {

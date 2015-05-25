@@ -77,10 +77,18 @@ class Assume
     }
 
     /**
-     * @param mixed ...$items
+     * Assumes that one or more value(s) is/are not `null`.
+     *
+     * @param mixed $item [optional]
+     * @param mixed $_ [optional]
+     *
+     * @return void
+     *
+     * @throws AssumptionViolatedException
      */
-    public static function assumeNotNull(...$items)
+    public static function assumeNotNull($item = null, $_ = null)
     {
+        $items = func_get_args();
         assumeThat($items, everyItem(notNullValue()));
     }
 }
