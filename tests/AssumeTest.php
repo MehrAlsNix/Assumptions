@@ -30,7 +30,7 @@ class AssumeTest extends TestCase
      */
     public static function setUpBeforeClass()
     {
-        assumePhpVersion('5.6');
+        assumePhpVersion('5.4');
     }
 
     /**
@@ -61,7 +61,7 @@ class AssumeTest extends TestCase
      */
     public function assumePhpVersion()
     {
-        assumePhpVersion('5.6');
+        assumePhpVersion('5.4');
         assumePhpVersion('9.1', 'Version not exists.');
     }
 
