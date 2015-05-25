@@ -32,14 +32,22 @@ then you should give **Assumption for PHPUnit** a try.
 
 <hr>
 
+## Requirements
+
+- PHP >= 5.4
+
 ## Installation
 
 [see wiki:installation](https://github.com/MehrAlsNix/Assumptions/wiki/1.-Installation)
 
+## Assumptions
+
+[see wiki:assumptions](https://github.com/MehrAlsNix/Assumptions/wiki/2.-Assumptions)
+
 ## Examples
 
-[see wiki:examples](https://github.com/MehrAlsNix/Assumptions/wiki/2.-Examples)
+[see wiki:examples](https://github.com/MehrAlsNix/Assumptions/wiki/3.-Examples)
 
-## Requirements
+## ResultPrinter
 
-- PHP >= 5.6
+[see wiki:result-printer](https://github.com/MehrAlsNix/Assumptions/wiki/4.-ResultPrinter)
