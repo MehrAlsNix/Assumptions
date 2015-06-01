@@ -40,6 +40,7 @@ class AssumeTest extends TestCase
      */
     public function assumeSocket()
     {
+        assumeSocket('google.de', 80);
         assumeSocket('127.0.0.1', 123);
     }
 
