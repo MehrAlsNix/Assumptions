@@ -20,7 +20,11 @@ matrix:
   fast_finish: true
 
 before_install:
-  - sudo apt-get install blackfire-php
+  - apt-key adv --keyserver hkp://hkps.pool.sks-keyservers.net --recv-keys D59097AB
+  - echo "deb http://packages.blackfire.io/debian any main" > /etc/apt/sources.list.d/blackfire.list
+  - apt-get update
+  - apt-get install -y blackfire-agent
+  - apt-get clean && rm -rf /var/lib/apt/lists/*
 
 install:
   - composer selfupdate
