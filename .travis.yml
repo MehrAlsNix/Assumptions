@@ -20,11 +20,11 @@ matrix:
   fast_finish: true
 
 before_install:
-  - apt-key adv --keyserver hkp://hkps.pool.sks-keyservers.net --recv-keys D59097AB
-  - echo "deb http://packages.blackfire.io/debian any main" > /etc/apt/sources.list.d/blackfire.list
-  - apt-get update
-  - apt-get install -y blackfire-agent
-  - apt-get clean && rm -rf /var/lib/apt/lists/*
+  - sudo apt-key adv --keyserver hkp://hkps.pool.sks-keyservers.net --recv-keys D59097AB
+  - sudo echo "deb http://packages.blackfire.io/debian any main" > /etc/apt/sources.list.d/blackfire.list
+  - sudo apt-get update
+  - sudo apt-get install -y blackfire-agent
+  - sudo apt-get clean && rm -rf /var/lib/apt/lists/*
 
 install:
   - composer selfupdate
