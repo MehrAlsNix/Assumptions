@@ -2,6 +2,10 @@
   "name": "mehr-als-nix/assumptions",
   "description": "Assumptions can be used to skip tests when common preconditions, like the PHP Version or installed extensions, are not met.",
   "homepage": "http://mehralsnix.github.io/Assumptions",
+  "support": {
+    "issues": "https://github.com/MehrAlsNix/Assumptions/issues",
+    "wiki": "https://github.com/MehrAlsNix/Assumptions/wiki"
+  },
   "keywords": [
     "phpunit",
     "testing"
@@ -21,7 +25,6 @@
     "phpunit/phpunit": "~4"
   },
   "require-dev": {
-    "johnkary/phpunit-speedtrap": "dev-master",
     "codeclimate/php-test-reporter": "0.*"
   },
   "autoload": {
