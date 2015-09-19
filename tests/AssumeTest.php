@@ -139,7 +139,7 @@ class AssumeTest extends TestCase
      */
     public function assumeCfgVar()
     {
-        assumeCfgVar('memory_limit');
+        assumeCfgVar('precision');
         assumeCfgVar('does_not_exist', 'Not found in php.ini');
     }
 
