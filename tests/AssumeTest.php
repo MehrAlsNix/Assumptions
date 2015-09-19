@@ -17,6 +17,7 @@
 
 namespace MehrAlsNix\Assumptions\Tests;
 
+use MehrAlsNix\Assumptions\AssumptionViolatedException;
 use PHPUnit_Framework_TestCase as TestCase;
 
 /**
@@ -134,8 +135,6 @@ class AssumeTest extends TestCase
 
     /**
      * @test
-     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
-     * @expectedExceptionMessage Not found in php.ini
      */
     public function assumeCfgVar()
     {
@@ -145,8 +144,12 @@ class AssumeTest extends TestCase
                 . 'See https://github.com/facebook/hhvm/issues/3754'
             );
         }
-        assumeCfgVar('precision');
-        assumeCfgVar('does_not_exist', 'Not found in php.ini');
+        try {
+            assumeCfgVar('precision');
+            assumeCfgVar('does_not_exist', 'Not found in php.ini');
+        } catch (AssumptionViolatedException $e) {
+            $this->assertStringEndsWith('Not found in php.ini', $e->getMessage());
+        }
     }
 
     /**
