@@ -139,6 +139,12 @@ class AssumeTest extends TestCase
      */
     public function assumeCfgVar()
     {
+        if (defined('HHVM_VERSION')) {
+            $this->markTestSkipped(
+                'Not supported in HHVM.'
+                . 'See https://github.com/facebook/hhvm/issues/3754'
+            );
+        }
         assumeCfgVar('precision');
         assumeCfgVar('does_not_exist', 'Not found in php.ini');
     }
