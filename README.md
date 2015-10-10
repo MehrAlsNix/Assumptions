@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/MehrAlsNix/Assumptions.svg?branch=develop)](https://travis-ci.org/MehrAlsNix/Assumptions) [![Code Climate](https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/gpa.svg)](https://codeclimate.com/github/MehrAlsNix/Assumptions) [![Test Coverage](https://codeclimate.com/github/MehrAlsNix/Assumptions/badges/coverage.svg)](https://codeclimate.com/github/MehrAlsNix/Assumptions/coverage) [![Dependency Status](https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5558aa6eb2ff6d2ecc000368)
 [![Latest Stable Version](https://poser.pugx.org/mehr-als-nix/assumptions/v/stable)](https://packagist.org/packages/mehr-als-nix/assumptions) [![Latest Unstable Version](https://poser.pugx.org/mehr-als-nix/assumptions/v/unstable)](https://packagist.org/packages/mehr-als-nix/assumptions) [![License](https://poser.pugx.org/mehr-als-nix/assumptions/license)](https://packagist.org/packages/mehr-als-nix/assumptions) [![Total Downloads](https://poser.pugx.org/mehr-als-nix/assumptions/downloads)](https://packagist.org/packages/mehr-als-nix/assumptions)
-[![Build status](https://ci.appveyor.com/api/projects/status/xqcdrl8b62d6qrle/branch/develop?svg=true)](https://ci.appveyor.com/project/siad007/assumptions/branch/develop) [![Codeship Status for MehrAlsNix/Assumptions](https://codeship.com/projects/ce1e9440-3009-0133-bb32-265edb7ab8a5/status?branch=develop)](https://codeship.com/projects/99562)
+[![Build status](https://ci.appveyor.com/api/projects/status/xqcdrl8b62d6qrle/branch/develop?svg=true)](https://ci.appveyor.com/project/siad007/assumptions/branch/develop)
 
 ## Introduction
 
