@@ -18,7 +18,7 @@ matrix:
 
 install:
   - composer selfupdate
-  - composer install
+  - composer install -n
 
 script:
   - mkdir -p build/logs
