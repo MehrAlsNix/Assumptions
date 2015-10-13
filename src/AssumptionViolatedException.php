@@ -17,6 +17,7 @@
 
 namespace MehrAlsNix\Assumptions;
 
+use Hamcrest\BaseMatcher;
 use Hamcrest\Matcher;
 
 /**
@@ -41,7 +42,7 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
     private $value;
 
     /**
-     * @var Matcher
+     * @var BaseMatcher
      */
     private $matcher;
 
