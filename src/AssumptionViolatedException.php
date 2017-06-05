@@ -17,8 +17,8 @@
 
 namespace MehrAlsNix\Assumptions;
 
-use Hamcrest\BaseMatcher;
 use Hamcrest\Matcher;
+use Hamcrest\BaseMatcher;
 
 /**
  * Class AssumptionViolatedException
@@ -47,11 +47,9 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
     private $matcher;
 
     /**
-     * {@inheritdoc}
-     *
-     * @param mixed $value
+     * @param string $value
      * @param Matcher $matcher
-     * @param string $message
+     * @param string $message [optional] The Exception message to throw.
      */
     public function __construct($value, Matcher $matcher, $message = '')
     {
@@ -65,7 +63,7 @@ class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
         parent::__construct($this->describe($message));
     }
 
-    protected function describe($message)
+    protected function describe($message): string
     {
         $description = '';
 

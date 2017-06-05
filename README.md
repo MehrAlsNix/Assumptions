@@ -36,7 +36,7 @@ then you should give **Assumption for PHPUnit** a try.
 
 ## Requirements
 
-- PHP >= 5.6
+- PHP >= 7.0
 
 ## Installation
 

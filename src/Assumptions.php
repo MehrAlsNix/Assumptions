@@ -15,6 +15,8 @@
  * @link      http://github.com/MehrAlsNix/Assumptions
  */
 
+use MehrAlsNix\Assumptions\Assume;
+
 if (!function_exists('assumeThat')) {
     /**
      * Assumes that a specific value matches a specific hamcrest matcher.
@@ -29,12 +31,7 @@ if (!function_exists('assumeThat')) {
      */
     function assumeThat($actual, \Hamcrest\Matcher $matcher, $message = '')
     {
-        call_user_func(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeThat'],
-            $actual,
-            $matcher,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeThat($actual, $matcher, $message);
     }
 }
 
@@ -53,11 +50,7 @@ if (!function_exists('assumeTrue')) {
      */
     function assumeTrue($bool, $message = '')
     {
-        call_user_func(
-            array('MehrAlsNix\Assumptions\Assume', 'assumeTrue'),
-            $bool,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeTrue($bool, $message);
     }
 }
 
@@ -76,11 +69,7 @@ if (!function_exists('assumeFalse')) {
      */
     function assumeFalse($bool, $message = '')
     {
-        call_user_func(
-            array('MehrAlsNix\Assumptions\Assume', 'assumeFalse'),
-            $bool,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeFalse($bool, $message);
     }
 }
 
@@ -88,18 +77,14 @@ if (!function_exists('assumeNotNull')) {
     /**
      * Assumes that one or more value(s) is/are not `null`.
      *
-     * @param mixed $item [optional]
-     * @param mixed $_ [optional]
+     * @param array $items
      *
      * @return void
-     *
-     * @throws \MehrAlsNix\Assumptions\AssumptionViolatedException
      */
-    function assumeNotNull($item = null, $_ = null)
+    function assumeNotNull(...$items)
     {
-        $items = func_get_args();
         call_user_func_array(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeNotNull'],
+            [Assume::class, 'assumeNotNull'],
             $items
         );
     }
@@ -119,11 +104,7 @@ if (!function_exists('assumePhpVersion')) {
      */
     function assumePhpVersion($atLeast, $message = '')
     {
-        call_user_func(
-            array('MehrAlsNix\Assumptions\Assume', 'assumePhpVersion'),
-            $atLeast,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumePhpVersion($atLeast, $message);
     }
 }
 
@@ -140,11 +121,7 @@ if (!function_exists('assumeExtensionLoaded')) {
      */
     function assumeExtensionLoaded($extension, $message = '')
     {
-        call_user_func(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeExtensionLoaded'],
-            $extension,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeExtensionLoaded($extension, $message);
     }
 }
 
@@ -161,11 +138,7 @@ if (!function_exists('assumeSocket')) {
      */
     function assumeSocket($address, $port = 0)
     {
-        call_user_func(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeSocket'],
-            $address,
-            $port
-        );
+        MehrAlsNix\Assumptions\Assume::assumeSocket($address, $port);
     }
 }
 
@@ -182,11 +155,7 @@ if (!function_exists('assumeEnvironment')) {
      */
     function assumeEnvironment($varname, $message = '')
     {
-        call_user_func(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeEnvironment'],
-            $varname,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeEnvironment($varname, $message);
     }
 }
 
@@ -204,12 +173,7 @@ if (!function_exists('assumeFreeDiskSpace')) {
      */
     function assumeFreeDiskSpace($directory, $available = null,  $message = '')
     {
-        call_user_func(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeFreeDiskSpace'],
-            $directory,
-            $available,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeFreeDiskSpace($directory, $available, $message);
     }
 }
 
@@ -226,11 +190,7 @@ if (!function_exists('assumeCfgVar')) {
      */
     function assumeCfgVar($name, $message = '')
     {
-        call_user_func(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeCfgVar'],
-            $name,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeCfgVar($name, $message);
     }
 }
 
@@ -247,10 +207,6 @@ if (!function_exists('assumeOperatingSystem')) {
      */
     function assumeOperatingSystem($pattern, $message = '')
     {
-        call_user_func(
-            ['MehrAlsNix\Assumptions\Assume', 'assumeOperatingSystem'],
-            $pattern,
-            $message
-        );
+        MehrAlsNix\Assumptions\Assume::assumeOperatingSystem($pattern, $message);
     }
 }

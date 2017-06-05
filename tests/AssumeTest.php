@@ -18,7 +18,7 @@
 namespace MehrAlsNix\Assumptions\Tests;
 
 use MehrAlsNix\Assumptions\AssumptionViolatedException;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AssumeTest
@@ -159,7 +159,7 @@ class AssumeTest extends TestCase
      */
     public function assumeOperatingSystem()
     {
-        if (strtolower(substr(php_uname('s'), 0, 3)) === 'win') {
+        if (0 === strpos(strtolower(php_uname('s')), 'win')) {
             assumeOperatingSystem('Win');
             assumeOperatingSystem('Linux', 'Not the right OS.');
         } else {

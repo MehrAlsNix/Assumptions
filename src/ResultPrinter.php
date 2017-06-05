@@ -17,14 +17,16 @@
 
 namespace MehrAlsNix\Assumptions;
 
-use PHPUnit_Framework_TestResult as TestResult;
+use PHPUnit\Framework\TestFailure;
+use PHPUnit\Framework\TestResult;
+use PHPUnit\TextUI\ResultPrinter as PHPUnitResultPrinter;
 
 /**
  * Class Printer
  * @package MehrAlsNix\Assumptions
  * @codeCoverageIgnore
  */
-class ResultPrinter extends \PHPUnit_TextUI_ResultPrinter
+class ResultPrinter extends PHPUnitResultPrinter
 {
     /**
      * @param TestResult $result
@@ -45,9 +47,9 @@ class ResultPrinter extends \PHPUnit_TextUI_ResultPrinter
                 sprintf(
                     'OK (%d test%s, %d assertion%s)',
                     count($result),
-                    (count($result) == 1) ? '' : 's',
+                    (count($result) === 1) ? '' : 's',
                     $this->numAssertions,
-                    ($this->numAssertions == 1) ? '' : 's'
+                    ($this->numAssertions === 1) ? '' : 's'
                 )
             );
         } else {
@@ -86,10 +88,10 @@ class ResultPrinter extends \PHPUnit_TextUI_ResultPrinter
      * @param TestResult $result
      * @return int
      */
-    private function getAssumptionsCount(TestResult $result)
+    private function getAssumptionsCount(TestResult $result): int
     {
         $assumptions = 0;
-        /** @var \PHPUnit_Framework_TestFailure $skipped */
+        /** @var TestFailure $skipped */
         $s = $result->skipped();
         foreach ($s as $skipped) {
             if ($skipped->thrownException() instanceof AssumptionViolatedException) {

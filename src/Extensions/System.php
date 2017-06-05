@@ -37,7 +37,7 @@ trait System
      */
     public static function assumePhpVersion($atLeast, $message = '')
     {
-        assumeThat(version_compare(phpversion(), $atLeast, '>='), is(true), $message);
+        assumeThat(version_compare(PHP_VERSION, $atLeast, '>='), is(true), $message);
     }
 
     /**
