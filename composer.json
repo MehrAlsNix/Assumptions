@@ -23,7 +23,7 @@
     "php": ">=7.1",
     "roave/security-advisories": "dev-master",
     "hamcrest/hamcrest-php": "~2",
-    "phpunit/phpunit": "^6.2"
+    "phpunit/phpunit": "^5.7"
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "0.*"
