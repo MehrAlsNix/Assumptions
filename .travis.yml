@@ -1,5 +1,7 @@
 language: php
-
+sudo: required
+dist: trusty
+group: edge
 php:
   - 7.0
   - 7.1
@@ -13,7 +15,6 @@ cache:
 
 matrix:
   allow_failures:
-    - php: hhvm
     - php: nightly
   fast_finish: true
 
