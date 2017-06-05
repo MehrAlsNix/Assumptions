@@ -19,6 +19,7 @@ namespace MehrAlsNix\Assumptions;
 
 use Hamcrest\Matcher;
 use Hamcrest\BaseMatcher;
+use PHPUnit\Framework\SkippedTestError;
 
 /**
  * Class AssumptionViolatedException
