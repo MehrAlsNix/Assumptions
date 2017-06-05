@@ -20,10 +20,10 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.0.7",
     "roave/security-advisories": "dev-master",
     "hamcrest/hamcrest-php": "~2",
-    "phpunit/phpunit": "^5.7"
+    "phpunit/phpunit": "^6.2"
   },
   "require-dev": {
     "codeclimate/php-test-reporter": "0.*"

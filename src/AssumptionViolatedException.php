@@ -24,7 +24,7 @@ use Hamcrest\BaseMatcher;
  * Class AssumptionViolatedException
  * @package MehrAlsNix\Assumptions
  */
-class AssumptionViolatedException extends \PHPUnit_Framework_SkippedTestError
+class AssumptionViolatedException extends SkippedTestError
 {
     /**
      * @var string

@@ -36,9 +36,9 @@ then you should give **Assumption for PHPUnit** a try.
 
 ## Requirements
 
-- PHP >= 7.1
+- PHP >= 7.0.7
 
-if you are looking for a version which supports PHP < 7.1 just use the v2.0.0
+if you are looking for a version which supports PHP < 7.0.7 just use the v2.0.0
 
 ## Installation
 
