@@ -16,6 +16,10 @@
  */
 
 namespace MehrAlsNix\Assumptions\Extensions;
+
+use function MehrAlsNix\Assumptions\Functions\assumeThat;
+use function MehrAlsNix\Assumptions\Functions\is;
+use function MehrAlsNix\Assumptions\Functions\not;
 use MehrAlsNix\Assumptions\AssumptionViolatedException;
 
 /**

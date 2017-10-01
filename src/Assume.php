@@ -18,6 +18,10 @@
 namespace MehrAlsNix\Assumptions;
 
 use Hamcrest\Matcher;
+use function MehrAlsNix\Assumptions\Functions\assumeThat;
+use function MehrAlsNix\Assumptions\Functions\is;
+use function MehrAlsNix\Assumptions\Functions\everyItem;
+use function MehrAlsNix\Assumptions\Functions\notNullValue;
 
 /**
  * Class Assume

@@ -19,6 +19,21 @@ namespace MehrAlsNix\Assumptions\Tests;
 
 use MehrAlsNix\Assumptions\AssumptionViolatedException;
 use PHPUnit\Framework\TestCase;
+use function MehrAlsNix\Assumptions\Functions\{
+    assumeCfgVar,
+    assumeEnvironment,
+    assumeExtensionLoaded,
+    assumeFalse,
+    assumeFreeDiskSpace,
+    assumeNotNull,
+    assumeOperatingSystem,
+    assumePhpVersion,
+    assumeSocket,
+    assumeThat,
+    assumeTrue,
+    is,
+    isNonEmptyString
+};
 
 /**
  * Class AssumeTest
@@ -47,13 +62,15 @@ class AssumeTest extends TestCase
 
     /**
      * @test
-     * @expectedException \MehrAlsNix\Assumptions\AssumptionViolatedException
-     * @expectedExceptionMessage Extension does not exists.
      */
     public function assumeExtensionLoaded()
     {
         assumeExtensionLoaded('SPL');
-        assumeExtensionLoaded('TEST', 'Extension does not exists.');
+        try {
+            assumeExtensionLoaded('TEST', 'Extension does not exists.');
+        } catch (AssumptionViolatedException $e) {
+            $this->assertContains('Extension does not exists.', $e->getMessage());
+        }
     }
 
     /**

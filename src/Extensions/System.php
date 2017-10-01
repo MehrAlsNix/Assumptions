@@ -16,6 +16,12 @@
  */
 
 namespace MehrAlsNix\Assumptions\Extensions;
+
+use function MehrAlsNix\Assumptions\Functions\assumeThat;
+use function MehrAlsNix\Assumptions\Functions\is;
+use function MehrAlsNix\Assumptions\Functions\not;
+use function MehrAlsNix\Assumptions\Functions\matchesPattern;
+use function MehrAlsNix\Assumptions\Functions\greaterThanOrEqualTo;
 use MehrAlsNix\Assumptions\AssumptionViolatedException;
 
 /**
@@ -118,6 +124,6 @@ trait System
     public static function assumeOperatingSystem($pattern, $message = '')
     {
         $regEx = sprintf('/%s/i', addcslashes($pattern, '/'));
-        assumeThat(php_uname('s'), matchesPattern($regEx), $message);
+        assumeThat(PHP_OS, matchesPattern($regEx), $message);
     }
 }
