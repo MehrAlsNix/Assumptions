@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Assumptions
  *
@@ -57,13 +58,17 @@ class AssumptionViolatedException extends SkippedTestError
         $this->value = json_encode($value);
         $this->matcher = $matcher;
 
-        if (function_exists('debug_backtrace')) {
+        if (\function_exists('debug_backtrace')) {
             $this->assumption = debug_backtrace()[1]['function'];
         }
 
         parent::__construct($this->describe($message));
     }
 
+    /**
+     * @param string $message
+     * @return string
+     */
     protected function describe($message): string
     {
         $description = '';

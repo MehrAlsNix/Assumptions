@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Assumptions
  *
@@ -40,11 +41,15 @@ trait Network
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeSocket($address, $port = 0)
+    public static function assumeSocket($address, $port = 0): void
     {
         $socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
         assumeThat($socket, is(not(false)), self::$SOCK_ERR_MSG . socket_last_error($socket));
-        assumeThat(@socket_connect($socket, $address, $port), is(not(false)), 'Unable to connect: ' . $address . ':' . $port);
+        assumeThat(
+            @socket_connect($socket, $address, $port),
+            is(not(false)),
+            'Unable to connect: ' . $address . ':' . $port
+        );
     }
 }

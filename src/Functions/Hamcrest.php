@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Assumptions
  *
@@ -15,8 +16,6 @@
  * @link      http://github.com/MehrAlsNix/Assumptions
  */
 
-namespace MehrAlsNix\Assumptions\Functions;
-
 /**
  * Make an assertion and throw {@link Hamcrest_AssertionError} if it fails.
  *
@@ -30,411 +29,734 @@ namespace MehrAlsNix\Assumptions\Functions;
  * assertThat("some error", $a > $b);
  * </pre>
  */
-function assertThat()
+namespace MehrAlsNix\Assumptions\Functions;
+
+use Hamcrest\Arrays\IsArrayContaining;
+use Hamcrest\Arrays\IsArrayContainingKey;
+use Hamcrest\Arrays\IsArrayContainingKeyValuePair;
+use Hamcrest\Arrays\IsArrayWithSize;
+use Hamcrest\Collection\IsEmptyTraversable;
+use Hamcrest\Collection\IsTraversableWithSize;
+use Hamcrest\Core\CombinableMatcher;
+use Hamcrest\Core\Every;
+use Hamcrest\Core\HasToString;
+use Hamcrest\Core\Is;
+use Hamcrest\Core\IsAnything;
+use Hamcrest\Core\IsEqual;
+use Hamcrest\Core\IsIdentical;
+use Hamcrest\Core\IsInstanceOf;
+use Hamcrest\Core\IsNot;
+use Hamcrest\Core\IsNull;
+use Hamcrest\Core\IsSame;
+use Hamcrest\Core\IsTypeOf;
+use Hamcrest\Core\Set;
+use Hamcrest\Matcher;
+use Hamcrest\Number\IsCloseTo;
+use Hamcrest\Number\OrderingComparison;
+use Hamcrest\Text\IsEmptyString;
+use Hamcrest\Text\IsEqualIgnoringCase;
+use Hamcrest\Text\IsEqualIgnoringWhiteSpace;
+use Hamcrest\Text\MatchesPattern;
+use Hamcrest\Text\StringContains;
+use Hamcrest\Text\StringContainsIgnoringCase;
+use Hamcrest\Text\StringContainsInOrder;
+use Hamcrest\Core\IsCollectionContaining;
+use Hamcrest\Core\DescribedAs;
+use Hamcrest\Core\AnyOf;
+use Hamcrest\Core\AllOf;
+use Hamcrest\Arrays\IsArrayContainingInOrder;
+use Hamcrest\Arrays\IsArrayContainingInAnyOrder;
+use Hamcrest\Arrays\IsArray;
+use Hamcrest\MatcherAssert;
+use Hamcrest\Text\StringEndsWith;
+use Hamcrest\Text\StringStartsWith;
+use Hamcrest\Type\IsArray as IsArrayType;
+use Hamcrest\Type\IsBoolean;
+use Hamcrest\Type\IsCallable;
+use Hamcrest\Type\IsDouble;
+use Hamcrest\Type\IsInteger;
+use Hamcrest\Type\IsNumeric;
+use Hamcrest\Type\IsObject;
+use Hamcrest\Type\IsResource;
+use Hamcrest\Type\IsScalar;
+use Hamcrest\Type\IsString;
+use Hamcrest\Xml\HasXPath;
+
+/**
+ * @param array ...$args
+ */
+function assertThat(...$args)
 {
-    $args = func_get_args();
-    call_user_func_array(
-        array('Hamcrest\MatcherAssert', 'assertThat'),
-        $args
-    );
+    MatcherAssert::assertThat($args);
 }
 
-function anArray(/* args... */)
+/**
+ * @param array ...$args
+ * @return IsArray
+ */
+function anArray(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Arrays\IsArray', 'anArray'), $args);
+    return IsArray::anArray($args);
 }
 
+/**
+ * @param $item
+ * @return IsArrayContaining
+ */
 function hasItemInArray($item)
 {
-    return \Hamcrest\Arrays\IsArrayContaining::hasItemInArray($item);
+    return IsArrayContaining::hasItemInArray($item);
 }
 
+/**
+ * @param $item
+ * @return IsArrayContaining
+ */
 function hasValue($item)
 {
-    return \Hamcrest\Arrays\IsArrayContaining::hasItemInArray($item);
+    return IsArrayContaining::hasItemInArray($item);
 }
 
-function arrayContainingInAnyOrder(/* args... */)
+/**
+ * @param array ...$args
+ * @return IsArrayContainingInAnyOrder
+ */
+function arrayContainingInAnyOrder(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Arrays\IsArrayContainingInAnyOrder', 'arrayContainingInAnyOrder'),
-        $args);
+    return IsArrayContainingInAnyOrder::arrayContainingInAnyOrder($args);
 }
 
-function containsInAnyOrder(/* args... */)
+/**
+ * @param array ...$args
+ * @return IsArrayContainingInAnyOrder
+ */
+function containsInAnyOrder(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Arrays\IsArrayContainingInAnyOrder', 'arrayContainingInAnyOrder'),
-        $args);
+    return IsArrayContainingInAnyOrder::arrayContainingInAnyOrder($args);
 }
 
-function arrayContaining(/* args... */)
+/**
+ * @param array ...$args
+ * @return IsArrayContainingInOrder
+ */
+function arrayContaining(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Arrays\IsArrayContainingInOrder', 'arrayContaining'), $args);
+    return IsArrayContainingInOrder::arrayContaining($args);
 }
 
-function contains(/* args... */)
+/**
+ * @param array ...$args
+ * @return IsArrayContainingInOrder
+ */
+function contains(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Arrays\IsArrayContainingInOrder', 'arrayContaining'), $args);
+    return IsArrayContainingInOrder::arrayContaining($args);
 }
 
+/**
+ * @param $key
+ * @return IsArrayContainingKey
+ */
 function hasKeyInArray($key)
 {
-    return \Hamcrest\Arrays\IsArrayContainingKey::hasKeyInArray($key);
+    return IsArrayContainingKey::hasKeyInArray($key);
 }
 
+/**
+ * @param $key
+ * @return IsArrayContainingKey
+ */
 function hasKey($key)
 {
-    return \Hamcrest\Arrays\IsArrayContainingKey::hasKeyInArray($key);
+    return IsArrayContainingKey::hasKeyInArray($key);
 }
 
+/**
+ * @param $key
+ * @param $value
+ * @return IsArrayContainingKeyValuePair
+ */
 function hasKeyValuePair($key, $value)
 {
-    return \Hamcrest\Arrays\IsArrayContainingKeyValuePair::hasKeyValuePair($key, $value);
+    return IsArrayContainingKeyValuePair::hasKeyValuePair($key, $value);
 }
 
+/**
+ * @param $key
+ * @param $value
+ * @return IsArrayContainingKeyValuePair
+ */
 function hasEntry($key, $value)
 {
-    return \Hamcrest\Arrays\IsArrayContainingKeyValuePair::hasKeyValuePair($key, $value);
+    return IsArrayContainingKeyValuePair::hasKeyValuePair($key, $value);
 }
 
+/**
+ * @param $size
+ * @return IsArrayWithSize
+ */
 function arrayWithSize($size)
 {
-    return \Hamcrest\Arrays\IsArrayWithSize::arrayWithSize($size);
+    return IsArrayWithSize::arrayWithSize($size);
 }
 
+/**
+ * @return DescribedAs
+ */
 function emptyArray()
 {
-    return \Hamcrest\Arrays\IsArrayWithSize::emptyArray();
+    return IsArrayWithSize::emptyArray();
 }
 
+/**
+ * @return DescribedAs
+ */
 function nonEmptyArray()
 {
-    return \Hamcrest\Arrays\IsArrayWithSize::nonEmptyArray();
+    return IsArrayWithSize::nonEmptyArray();
 }
 
+/**
+ * @return IsEmptyTraversable
+ */
 function emptyTraversable()
 {
-    return \Hamcrest\Collection\IsEmptyTraversable::emptyTraversable();
+    return IsEmptyTraversable::emptyTraversable();
 }
 
+/**
+ * @return IsEmptyTraversable
+ */
 function nonEmptyTraversable()
 {
-    return \Hamcrest\Collection\IsEmptyTraversable::nonEmptyTraversable();
+    return IsEmptyTraversable::nonEmptyTraversable();
 }
 
+/**
+ * @param $size
+ * @return IsTraversableWithSize
+ */
 function traversableWithSize($size)
 {
-    return \Hamcrest\Collection\IsTraversableWithSize::traversableWithSize($size);
+    return IsTraversableWithSize::traversableWithSize($size);
 }
 
-function allOf(/* args... */)
+/**
+ * @param array ...$args
+ * @return AllOf
+ */
+function allOf(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Core\AllOf', 'allOf'), $args);
+    return AllOf::allOf($args);
 }
 
-function anyOf(/* args... */)
+/**
+ * @param array ...$args
+ * @return AnyOf
+ */
+function anyOf(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Core\AnyOf', 'anyOf'), $args);
+    return AnyOf::anyOf($args);
 }
 
-function noneOf(/* args... */)
+/**
+ * @param array ...$args
+ * @return IsNot
+ */
+function noneOf(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Core\AnyOf', 'noneOf'), $args);
+    return AnyOf::noneOf($args);
 }
 
-function both(\Hamcrest\Matcher $matcher)
+/**
+ * @param Matcher $matcher
+ * @return CombinableMatcher
+ */
+function both(Matcher $matcher)
 {
-    return \Hamcrest\Core\CombinableMatcher::both($matcher);
+    return CombinableMatcher::both($matcher);
 }
 
-function either(\Hamcrest\Matcher $matcher)
+/**
+ * @param Matcher $matcher
+ * @return CombinableMatcher
+ */
+function either(Matcher $matcher)
 {
-    return \Hamcrest\Core\CombinableMatcher::either($matcher);
+    return CombinableMatcher::either($matcher);
 }
 
-function describedAs(/* args... */)
+/**
+ * @param array ...$args
+ * @return DescribedAs
+ */
+function describedAs(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Core\DescribedAs', 'describedAs'), $args);
+    return DescribedAs::describedAs($args);
 }
 
-function everyItem(\Hamcrest\Matcher $itemMatcher)
+/**
+ * @param Matcher $itemMatcher
+ * @return Every
+ */
+function everyItem(Matcher $itemMatcher)
 {
-    return \Hamcrest\Core\Every::everyItem($itemMatcher);
+    return Every::everyItem($itemMatcher);
 }
 
+/**
+ * @param $matcher
+ * @return HasToString
+ */
 function hasToString($matcher)
 {
-    return \Hamcrest\Core\HasToString::hasToString($matcher);
+    return HasToString::hasToString($matcher);
 }
 
+/**
+ * @param $value
+ * @return Is
+ */
 function is($value)
 {
-    return \Hamcrest\Core\Is::is($value);
+    return Is::is($value);
 }
 
+/**
+ * @param string $description
+ * @return IsAnything
+ */
 function anything($description = 'ANYTHING')
 {
-    return \Hamcrest\Core\IsAnything::anything($description);
+    return IsAnything::anything($description);
 }
 
-function hasItem(/* args... */)
+/**
+ * @param array ...$args
+ * @return IsCollectionContaining
+ */
+function hasItem(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Core\IsCollectionContaining', 'hasItem'), $args);
+    return IsCollectionContaining::hasItem($args);
 }
 
-function hasItems(/* args... */)
+/**
+ * @param array ...$args
+ * @return AllOf
+ */
+function hasItems(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Core\IsCollectionContaining', 'hasItems'), $args);
+    return IsCollectionContaining::hasItems($args);
 }
 
+/**
+ * @param $item
+ * @return IsEqual
+ */
 function equalTo($item)
 {
-    return \Hamcrest\Core\IsEqual::equalTo($item);
+    return IsEqual::equalTo($item);
 }
 
+/**
+ * @param $value
+ * @return IsIdentical
+ */
 function identicalTo($value)
 {
-    return \Hamcrest\Core\IsIdentical::identicalTo($value);
+    return IsIdentical::identicalTo($value);
 }
 
+/**
+ * @param $theClass
+ * @return IsInstanceOf
+ */
 function anInstanceOf($theClass)
 {
-    return \Hamcrest\Core\IsInstanceOf::anInstanceOf($theClass);
+    return IsInstanceOf::anInstanceOf($theClass);
 }
 
+/**
+ * @param $theClass
+ * @return IsInstanceOf
+ */
 function any($theClass)
 {
-    return \Hamcrest\Core\IsInstanceOf::anInstanceOf($theClass);
+    return IsInstanceOf::anInstanceOf($theClass);
 }
 
+/**
+ * @param $value
+ * @return IsNot
+ */
 function not($value)
 {
-    return \Hamcrest\Core\IsNot::not($value);
+    return IsNot::not($value);
 }
 
+/**
+ * @return IsNull
+ */
 function nullValue()
 {
-    return \Hamcrest\Core\IsNull::nullValue();
+    return IsNull::nullValue();
 }
 
+/**
+ * @return IsNot
+ */
 function notNullValue()
 {
-    return \Hamcrest\Core\IsNull::notNullValue();
+    return IsNull::notNullValue();
 }
 
+/**
+ * @param $object
+ * @return IsSame
+ */
 function sameInstance($object)
 {
-    return \Hamcrest\Core\IsSame::sameInstance($object);
+    return IsSame::sameInstance($object);
 }
 
+/**
+ * @param $theType
+ * @return IsTypeOf
+ */
 function typeOf($theType)
 {
-    return \Hamcrest\Core\IsTypeOf::typeOf($theType);
+    return IsTypeOf::typeOf($theType);
 }
 
+/**
+ * @param $property
+ * @return Set
+ */
 function set($property)
 {
-    return \Hamcrest\Core\Set::set($property);
+    return Set::set($property);
 }
 
+/**
+ * @param $property
+ * @return Set
+ */
 function notSet($property)
 {
-    return \Hamcrest\Core\Set::notSet($property);
+    return Set::notSet($property);
 }
 
+/**
+ * @param $value
+ * @param $delta
+ * @return IsCloseTo
+ */
 function closeTo($value, $delta)
 {
-    return \Hamcrest\Number\IsCloseTo::closeTo($value, $delta);
+    return IsCloseTo::closeTo($value, $delta);
 }
 
+/**
+ * @param $value
+ * @return OrderingComparison
+ */
 function comparesEqualTo($value)
 {
-    return \Hamcrest\Number\OrderingComparison::comparesEqualTo($value);
+    return OrderingComparison::comparesEqualTo($value);
 }
 
+/**
+ * @param $value
+ * @return OrderingComparison
+ */
 function greaterThan($value)
 {
-    return \Hamcrest\Number\OrderingComparison::greaterThan($value);
+    return OrderingComparison::greaterThan($value);
 }
 
+/**
+ * @param $value
+ * @return OrderingComparison
+ */
 function greaterThanOrEqualTo($value)
 {
-    return \Hamcrest\Number\OrderingComparison::greaterThanOrEqualTo($value);
+    return OrderingComparison::greaterThanOrEqualTo($value);
 }
 
+/**
+ * @param $value
+ * @return OrderingComparison
+ */
 function atLeast($value)
 {
-    return \Hamcrest\Number\OrderingComparison::greaterThanOrEqualTo($value);
+    return OrderingComparison::greaterThanOrEqualTo($value);
 }
 
+/**
+ * @param $value
+ * @return OrderingComparison
+ */
 function lessThan($value)
 {
-    return \Hamcrest\Number\OrderingComparison::lessThan($value);
+    return OrderingComparison::lessThan($value);
 }
 
+/**
+ * @param $value
+ * @return OrderingComparison
+ */
 function lessThanOrEqualTo($value)
 {
-    return \Hamcrest\Number\OrderingComparison::lessThanOrEqualTo($value);
+    return OrderingComparison::lessThanOrEqualTo($value);
 }
 
+/**
+ * @param $value
+ * @return OrderingComparison
+ */
 function atMost($value)
 {
-    return \Hamcrest\Number\OrderingComparison::lessThanOrEqualTo($value);
+    return OrderingComparison::lessThanOrEqualTo($value);
 }
 
+/**
+ * @return IsEmptyString
+ */
 function isEmptyString()
 {
-    return \Hamcrest\Text\IsEmptyString::isEmptyString();
+    return IsEmptyString::isEmptyString();
 }
 
+/**
+ * @return IsEmptyString
+ */
 function emptyString()
 {
-    return \Hamcrest\Text\IsEmptyString::isEmptyString();
+    return IsEmptyString::isEmptyString();
 }
 
+/**
+ * @return AnyOf
+ */
 function isEmptyOrNullString()
 {
-    return \Hamcrest\Text\IsEmptyString::isEmptyOrNullString();
+    return IsEmptyString::isEmptyOrNullString();
 }
 
+/**
+ * @return AnyOf
+ */
 function nullOrEmptyString()
 {
-    return \Hamcrest\Text\IsEmptyString::isEmptyOrNullString();
+    return IsEmptyString::isEmptyOrNullString();
 }
 
+/**
+ * @return IsEmptyString
+ */
 function isNonEmptyString()
 {
-    return \Hamcrest\Text\IsEmptyString::isNonEmptyString();
+    return IsEmptyString::isNonEmptyString();
 }
 
+/**
+ * @return IsEmptyString
+ */
 function nonEmptyString()
 {
-    return \Hamcrest\Text\IsEmptyString::isNonEmptyString();
+    return IsEmptyString::isNonEmptyString();
 }
 
+/**
+ * @param $string
+ * @return IsEqualIgnoringCase
+ */
 function equalToIgnoringCase($string)
 {
-    return \Hamcrest\Text\IsEqualIgnoringCase::equalToIgnoringCase($string);
+    return IsEqualIgnoringCase::equalToIgnoringCase($string);
 }
 
+/**
+ * @param $string
+ * @return IsEqualIgnoringWhiteSpace
+ */
 function equalToIgnoringWhiteSpace($string)
 {
-    return \Hamcrest\Text\IsEqualIgnoringWhiteSpace::equalToIgnoringWhiteSpace($string);
+    return IsEqualIgnoringWhiteSpace::equalToIgnoringWhiteSpace($string);
 }
 
+/**
+ * @param $pattern
+ * @return MatchesPattern
+ */
 function matchesPattern($pattern)
 {
-    return \Hamcrest\Text\MatchesPattern::matchesPattern($pattern);
+    return MatchesPattern::matchesPattern($pattern);
 }
 
+/**
+ * @param $substring
+ * @return StringContains
+ */
 function containsString($substring)
 {
-    return \Hamcrest\Text\StringContains::containsString($substring);
+    return StringContains::containsString($substring);
 }
 
+/**
+ * @param $substring
+ * @return StringContainsIgnoringCase
+ */
 function containsStringIgnoringCase($substring)
 {
-    return \Hamcrest\Text\StringContainsIgnoringCase::containsStringIgnoringCase($substring);
+    return StringContainsIgnoringCase::containsStringIgnoringCase($substring);
 }
 
-function stringContainsInOrder(/* args... */)
+/**
+ * @param array ...$args
+ * @return StringContainsInOrder
+ */
+function stringContainsInOrder(...$args)
 {
-    $args = func_get_args();
-    return call_user_func_array(array('\Hamcrest\Text\StringContainsInOrder', 'stringContainsInOrder'), $args);
+    return StringContainsInOrder::stringContainsInOrder($args);
 }
 
+/**
+ * @param $substring
+ * @return StringEndsWith
+ */
 function endsWith($substring)
 {
-    return \Hamcrest\Text\StringEndsWith::endsWith($substring);
+    return StringEndsWith::endsWith($substring);
 }
 
+/**
+ * @param $substring
+ * @return StringStartsWith
+ */
 function startsWith($substring)
 {
-    return \Hamcrest\Text\StringStartsWith::startsWith($substring);
+    return StringStartsWith::startsWith($substring);
 }
 
+/**
+ * @return IsArrayType
+ */
 function arrayValue()
 {
-    return \Hamcrest\Type\IsArray::arrayValue();
+    return IsArrayType::arrayValue();
 }
 
+/**
+ * @return IsBoolean
+ */
 function booleanValue()
 {
-    return \Hamcrest\Type\IsBoolean::booleanValue();
+    return IsBoolean::booleanValue();
 }
 
+/**
+ * @return IsBoolean
+ */
 function boolValue()
 {
-    return \Hamcrest\Type\IsBoolean::booleanValue();
+    return IsBoolean::booleanValue();
 }
 
+/**
+ * @return IsCallable
+ */
 function callableValue()
 {
-    return \Hamcrest\Type\IsCallable::callableValue();
+    return IsCallable::callableValue();
 }
 
+/**
+ * @return IsDouble
+ */
 function doubleValue()
 {
-    return \Hamcrest\Type\IsDouble::doubleValue();
+    return IsDouble::doubleValue();
 }
 
+/**
+ * @return IsDouble
+ */
 function floatValue()
 {
-    return \Hamcrest\Type\IsDouble::doubleValue();
+    return IsDouble::doubleValue();
 }
 
+/**
+ * @return IsInteger
+ */
 function integerValue()
 {
-    return \Hamcrest\Type\IsInteger::integerValue();
+    return IsInteger::integerValue();
 }
 
+/**
+ * @return IsInteger
+ */
 function intValue()
 {
-    return \Hamcrest\Type\IsInteger::integerValue();
+    return IsInteger::integerValue();
 }
 
+/**
+ * @return IsNumeric
+ */
 function numericValue()
 {
-    return \Hamcrest\Type\IsNumeric::numericValue();
+    return IsNumeric::numericValue();
 }
 
+/**
+ * @return IsObject
+ */
 function objectValue()
 {
-    return \Hamcrest\Type\IsObject::objectValue();
+    return IsObject::objectValue();
 }
 
+/**
+ * @return IsObject
+ */
 function anObject()
 {
-    return \Hamcrest\Type\IsObject::objectValue();
+    return IsObject::objectValue();
 }
 
+/**
+ * @return IsResource
+ */
 function resourceValue()
 {
-    return \Hamcrest\Type\IsResource::resourceValue();
+    return IsResource::resourceValue();
 }
 
+/**
+ * @return IsScalar
+ */
 function scalarValue()
 {
-    return \Hamcrest\Type\IsScalar::scalarValue();
+    return IsScalar::scalarValue();
 }
 
+/**
+ * @return IsString
+ */
 function stringValue()
 {
-    return \Hamcrest\Type\IsString::stringValue();
+    return IsString::stringValue();
 }
 
+/**
+ * @param $xpath
+ * @param null $matcher
+ * @return HasXPath
+ */
 function hasXPath($xpath, $matcher = null)
 {
-    return \Hamcrest\Xml\HasXPath::hasXPath($xpath, $matcher);
+    return HasXPath::hasXPath($xpath, $matcher);
 }
-

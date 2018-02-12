@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Assumptions
  *
@@ -42,7 +43,7 @@ class Assume
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeTrue($bool, $message = '')
+    public static function assumeTrue($bool, $message = ''): void
     {
         assumeThat($bool, is(true), $message);
     }
@@ -57,7 +58,7 @@ class Assume
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeFalse($bool, $message = '')
+    public static function assumeFalse($bool, $message = ''): void
     {
         assumeThat($bool, is(false), $message);
     }
@@ -73,7 +74,7 @@ class Assume
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeThat($actual, Matcher $matcher, $message = '')
+    public static function assumeThat($actual, Matcher $matcher, $message = ''): void
     {
         if (!$matcher->matches($actual)) {
             throw new AssumptionViolatedException($actual, $matcher, $message);
@@ -86,7 +87,7 @@ class Assume
      * @param array $items
      * @return void
      */
-    public static function assumeNotNull(...$items)
+    public static function assumeNotNull(...$items): void
     {
         assumeThat($items, everyItem(notNullValue()));
     }

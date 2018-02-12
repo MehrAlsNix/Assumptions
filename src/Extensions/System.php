@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Assumptions
  *
@@ -41,7 +42,7 @@ trait System
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumePhpVersion($atLeast, $message = '')
+    public static function assumePhpVersion($atLeast, $message = ''): void
     {
         assumeThat(version_compare(PHP_VERSION, $atLeast, '>='), is(true), $message);
     }
@@ -56,9 +57,9 @@ trait System
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeExtensionLoaded($extension, $message = '')
+    public static function assumeExtensionLoaded($extension, $message = ''): void
     {
-        assumeThat(extension_loaded($extension), is(true), $message);
+        assumeThat(\extension_loaded($extension), is(true), $message);
     }
 
     /**
@@ -71,7 +72,7 @@ trait System
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeEnvironment($varname, $message = '')
+    public static function assumeEnvironment($varname, $message = ''): void
     {
         assumeThat(getenv($varname), is(not(false)), $message);
     }
@@ -87,7 +88,7 @@ trait System
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeFreeDiskSpace($directory, $available = null, $message = '')
+    public static function assumeFreeDiskSpace($directory, $available = null, $message = ''): void
     {
         if ($available === null) {
             assumeThat(disk_free_space($directory), is(not(false)), $message);
@@ -106,7 +107,7 @@ trait System
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeCfgVar($name, $message = '')
+    public static function assumeCfgVar($name, $message = ''): void
     {
         assumeThat(get_cfg_var($name), is(not(false)), $message);
     }
@@ -121,7 +122,7 @@ trait System
      *
      * @throws AssumptionViolatedException
      */
-    public static function assumeOperatingSystem($pattern, $message = '')
+    public static function assumeOperatingSystem($pattern, $message = ''): void
     {
         $regEx = sprintf('/%s/i', addcslashes($pattern, '/'));
         assumeThat(PHP_OS, matchesPattern($regEx), $message);

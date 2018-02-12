@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 /**
  * Assumptions
  *
@@ -33,7 +34,7 @@ class ResultPrinter extends PHPUnitResultPrinter
      */
     protected function printFooter(TestResult $result)
     {
-        if (count($result) === 0) {
+        if (\count($result) === 0) {
             $this->writeWithColor(
                 'fg-black, bg-yellow',
                 'No tests executed!'
@@ -46,8 +47,8 @@ class ResultPrinter extends PHPUnitResultPrinter
                 'fg-black, bg-green',
                 sprintf(
                     'OK (%d test%s, %d assertion%s)',
-                    count($result),
-                    (count($result) === 1) ? '' : 's',
+                    \count($result),
+                    (\count($result) === 1) ? '' : 's',
                     $this->numAssertions,
                     ($this->numAssertions === 1) ? '' : 's'
                 )
@@ -72,7 +73,7 @@ class ResultPrinter extends PHPUnitResultPrinter
             }
 
             $numAssumptions = $this->getAssumptionsCount($result);
-            $this->writeCountString(count($result), 'Tests', $color, true);
+            $this->writeCountString(\count($result), 'Tests', $color, true);
             $this->writeCountString($this->numAssertions, 'Assertions', $color, true);
             $this->writeCountString($result->errorCount(), 'Errors', $color);
             $this->writeCountString($result->failureCount(), 'Failures', $color);

@@ -35,6 +35,8 @@ use function MehrAlsNix\Assumptions\Functions\{
     isNonEmptyString
 };
 
+require_once __DIR__ . '/../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
+
 /**
  * Class AssumeTest
  * @package MehrAlsNix\Assumptions\Tests
@@ -69,7 +71,7 @@ class AssumeTest extends TestCase
         try {
             assumeExtensionLoaded('TEST', 'Extension does not exists.');
         } catch (AssumptionViolatedException $e) {
-            $this->assertContains('Extension does not exists.', $e->getMessage());
+            assertContains('Extension does not exists.', $e->getMessage());
         }
     }
 
@@ -165,7 +167,7 @@ class AssumeTest extends TestCase
             assumeCfgVar('precision');
             assumeCfgVar('does_not_exist', 'Not found in php.ini');
         } catch (AssumptionViolatedException $e) {
-            $this->assertStringEndsWith('Not found in php.ini', $e->getMessage());
+            assertStringEndsWith('Not found in php.ini', $e->getMessage());
         }
     }
 
